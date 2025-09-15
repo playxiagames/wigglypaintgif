@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(printf:*)",
+      "mcp___21st-dev_magic__21st_magic_component_builder",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "WebFetch(domain:internet-janitor.itch.io)",
+      "WebFetch(domain:wigglypaint.net)",
+      "WebSearch",
+      "WebFetch(domain:stackoverflow.com)",
+      "mcp__playwright__playwright_navigate",
+      "Bash(npx tsc:*)",
+      "Bash(npm run build:*)"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "context7"
+  ]
+}

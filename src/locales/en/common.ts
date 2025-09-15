@@ -1,0 +1,146 @@
+export default {
+  "navigation": {
+    "home": "Home",
+    "gallery": "Gallery", 
+    "about": "About",
+    "stats": "Stats"
+  },
+  "home": {
+    "title": "WigglyPaint - Free Animated GIF Creator & Drawing Tool",
+    "subtitle": "Create lively animated drawings with wiggling effects. Draw, doodle, and export as GIFs instantly - no login required!",
+    "description": "Transform doodles into animated GIFs with WigglyPaint's wiggling effects. Free online drawing tool with 8 animated brushes and instant export.",
+    "what_is_title": "What is WigglyPaint?",
+    "intro_paragraph": "**WigglyPaint** is a revolutionary free online drawing tool that brings your artwork to life with animated wiggling effects. Inspired by classic digital art programs like Shake Art and Kid Pix, WigglyPaint transforms simple doodles into mesmerizing animated GIFs that capture the joy and spontaneity of creative expression.",
+    "creative_features_title": "🎨 Creative Features",
+    "creative_features": {
+      "brushes": "**8 Unique Brushes:** Each with different thickness, effects, and vibrant colors",
+      "animation": "**Animated Effects:** Watch your lines wiggle with life as you draw",
+      "sound": "**Sound Feedback:** Every brush stroke produces distinctive sound effects",
+      "export": "**Instant Export:** Save your creations as high-quality animated GIFs",
+      "cropping": "**Cropping Tools:** Perfect your composition with precise editing"
+    },
+    "user_experience_title": "⚡ User Experience",
+    "user_experience": {
+      "no_registration": "**No Registration:** Start creating immediately without accounts",
+      "privacy": "**Privacy First:** Your drawings never leave your device",
+      "multi_platform": "**Multi-Platform:** Works on PC, mobile, and tablet devices",
+      "offline": "**Offline Ready:** Save as HTML for offline use",
+      "unlimited": "**Unlimited Use:** No limits on creation or GIF exports"
+    },
+    "how_to_use_title": "🚀 How to Use WigglyPaint",
+    "how_to_use_steps": {
+      "step1": "**Choose Your Brush:** Select from 8 unique animated brushes",
+      "step2": "**Start Drawing:** Let your creativity flow - every stroke wiggles!",
+      "step3": "**Adjust & Edit:** Use crop, undo, and size adjustment tools",
+      "step4": "**Customize:** Set background colors and drawing preferences",
+      "step5": "**Export:** Click EXPORT to save your animated GIF masterpiece"
+    },
+    "why_choose_title": "🎯 Why Choose WigglyPaint?",
+    "why_choose_content": "Unlike static drawing tools, WigglyPaint adds dynamic animation to every stroke, making digital art creation more engaging and fun. Whether you're a professional artist looking for creative inspiration or someone who simply enjoys doodling, WigglyPaint offers an intuitive platform for animated GIF creation that requires no technical expertise.",
+    "rating_title": "🏆 Highly Rated by Users",
+    "rating_content": "With a 4.9/5 star rating from over 1,500 users, WigglyPaint has become the go-to tool for animated GIF creation. Users love its simplicity, creative potential, and the unique wiggling animation effects that make every drawing come alive.",
+    "faq_title": "❓ Frequently Asked Questions",
+    "faq": {
+      "free_title": "Is WigglyPaint completely free?",
+      "free_content": "Yes! WigglyPaint is 100% free with no hidden costs, subscriptions, or limitations on usage or exports.",
+      "account_title": "Do I need to create an account?",
+      "account_content": "No registration required. Simply visit our website and start creating animated GIFs immediately.",
+      "privacy_title": "Are my drawings stored on your servers?",
+      "privacy_content": "No. All your artwork remains on your device. We don't collect or store any personal data or drawings.",
+      "mobile_title": "Can I use WigglyPaint on mobile devices?",
+      "mobile_content": "Absolutely! WigglyPaint works seamlessly on smartphones, tablets, and desktop computers with touch and mouse input."
+    },
+    "gallery_preview_title": "Explore Amazing Creations",
+    "gallery_preview_subtitle": "Discover incredible animated GIFs created by WigglyPaint users worldwide",
+    "view_gallery": "View Full Gallery"
+  },
+  "gallery": {
+    "title": "WigglyPaint Gallery - Download Free Animated GIFs",
+    "subtitle": "Browse and download amazing animated GIFs created with WigglyPaint",
+    "description": "Explore 250+ free animated GIFs created with WigglyPaint. Download high-quality wiggling animations for your projects. All GIFs are free to use.",
+    "stats_gifs": "GIFs available",
+    "stats_downloads": "total downloads",
+    "showing": "Showing",
+    "of": "of",
+    "page": "Page"
+  },
+  "about": {
+    "title": "About WigglyPaint - Animated GIF Creator Story & Features",
+    "subtitle": "Learn about WigglyPaint's mission and features",
+    "description": "Discover WigglyPaint, the revolutionary animated GIF creator. Learn about our features, mission to make digital art accessible, and wiggling technology.",
+  },
+  "stats": {
+    "title": "WigglyPaint Stats - Most Popular Animated GIFs",
+    "subtitle": "See which animated GIFs are most popular",
+    "description": "View real-time download statistics for WigglyPaint animated GIFs. Discover trending wiggling animations and see which creative effects users love most.",
+  },
+  "contact": {
+    "title": "Contact Us - Get Support for WigglyPaint GIF Creator",
+    "subtitle": "Get in touch with our team",
+    "description": "Contact WigglyPaint support for animated GIF creation help, technical issues, feedback, or business inquiries. We help create amazing wiggling animations.",
+    "hero_title": "Contact WigglyPaint Support",
+    "hero_subtitle": "Need help with animated GIF creation? Have questions or feedback? We're here to assist you.",
+    "email_title": "📧 Email Support",
+    "email_description": "For technical support, bug reports, or general inquiries",
+    "email_address": "support@wigglypaintgif.com",
+    "response_time": "Response time: 24-48 hours",
+    "common_questions": "Common Questions",
+    "faq_free": "Is WigglyPaint really free?",
+    "faq_free_answer": "Yes! WigglyPaint is completely free with no hidden costs or limitations.",
+    "faq_account": "Do I need to create an account?",
+    "faq_account_answer": "No account required. Start creating animated GIFs immediately.",
+    "faq_privacy": "Is my data private?",
+    "faq_privacy_answer": "Your drawings never leave your device. We don't store any personal data.",
+    "faq_mobile": "Does it work on mobile?",
+    "faq_mobile_answer": "Yes! WigglyPaint works on all devices including smartphones and tablets."
+  },
+  "terms": {
+    "title": "Terms of Service - WigglyPaint GIF Creator Agreement",
+    "subtitle": "Terms and conditions for using WigglyPaint",
+    "description": "Read WigglyPaint's terms of service. Understand your rights and responsibilities when using our free online drawing tool and GIF creation service.",
+  },
+  "privacy": {
+    "title": "Privacy Policy - WigglyPaint Data & Privacy Protection",
+    "subtitle": "Your privacy and data protection",
+    "description": "Learn how WigglyPaint protects your privacy and data. Our policy explains what information we collect, how we use it, and your rights."
+  },
+  "about_content": {
+    "hero_title": "About WigglyPaint GIF Creator",
+    "hero_subtitle": "Bringing joy to digital art creation with animated wiggling effects",
+    "what_is_title": "What is WigglyPaint?",
+    "what_is_content": "WigglyPaint is a revolutionary free online drawing tool that transforms simple doodles into captivating animated GIFs. Inspired by classic programs like Shake Art and Kid Pix, WigglyPaint adds life to your artwork with unique wiggling animations and delightful sound effects.",
+    "mission_title": "Our Mission",
+    "mission_content": "We believe digital art creation should be joyful, accessible, and fun for everyone. WigglyPaint removes barriers to creative expression by providing a simple yet powerful tool that anyone can use, regardless of their artistic skill level.",
+    "features_title": "Key Features",
+    "feature_brushes": "8 Unique Animated Brushes",
+    "feature_brushes_desc": "Each brush creates different wiggling effects and visual styles",
+    "feature_sound": "Interactive Sound Effects", 
+    "feature_sound_desc": "Every stroke produces delightful audio feedback",
+    "feature_export": "Instant GIF Export",
+    "feature_export_desc": "Save your creations as high-quality animated GIFs",
+    "feature_privacy": "Privacy-First Design",
+    "feature_privacy_desc": "Your artwork never leaves your device",
+    "feature_crossplatform": "Cross-Platform Compatible",
+    "feature_crossplatform_desc": "Works on desktop, tablet, and mobile devices",
+    "feature_free": "Completely Free",
+    "feature_free_desc": "No accounts, no limits, no hidden costs",
+    "technology_title": "Built with Love",
+    "technology_content": "WigglyPaint is built using Decker technology and hosted on modern web infrastructure. We're grateful to Internet Janitor for creating the original WigglyPaint tool that inspired millions of creative moments.",
+    "community_title": "Join Our Community",
+    "community_content": "With over 1,500 users and a 4.9/5 star rating, WigglyPaint has become a beloved tool for artists, educators, and anyone who enjoys creative expression. Join our growing community of digital artists!"
+  },
+  "footer": {
+    "description": "Create amazing animated GIFs with wiggling effects. Free online drawing tool that brings your doodles to life with dynamic animations and sound effects.",
+    "rating": "stars from 1,500+ users worldwide",
+    "explore": "Explore",
+    "support": "Support", 
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "blog": "Blog",
+    "contact": "Contact",
+    "copyright": "WigglyPaint GIF Creator. All rights reserved.",
+    "powered_by": "Powered by Internet Janitor's WigglyPaint",
+    "original_tool": "Original Tool",
+    "official_site": "Official Site"
+  }
+}

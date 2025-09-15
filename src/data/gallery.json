@@ -1,0 +1,104 @@
+[
+  {
+    "id": "1",
+    "title": "Wiggly Animation 1",
+    "description": "A colorful wiggly paint animation",
+    "imageUrl": "https://gifs.wigglypaintgif.com/gifs/1.gif",
+    "thumbnailUrl": "https://gifs.wigglypaintgif.com/gifs/1.gif",
+    "tags": ["wiggly", "colorful", "abstract"],
+    "category": "abstract",
+    "createdAt": "2024-01-15",
+    "author": "WigglyPaint",
+    "downloads": 125,
+    "fileSize": 245600,
+    "dimensions": {
+      "width": 800,
+      "height": 600
+    }
+  },
+  {
+    "id": "2",
+    "title": "Flowing Colors",
+    "description": "Smooth flowing color transitions",
+    "imageUrl": "https://gifs.wigglypaintgif.com/gifs/2.gif",
+    "thumbnailUrl": "https://gifs.wigglypaintgif.com/gifs/2.gif",
+    "tags": ["flow", "gradient", "smooth"],
+    "category": "motion",
+    "createdAt": "2024-01-14",
+    "author": "WigglyPaint",
+    "downloads": 87,
+    "fileSize": 189300,
+    "dimensions": {
+      "width": 800,
+      "height": 600
+    }
+  },
+  {
+    "id": "3",
+    "title": "Geometric Dance",
+    "description": "Dancing geometric shapes with wiggly effects",
+    "imageUrl": "https://gifs.wigglypaintgif.com/gifs/3.gif",
+    "thumbnailUrl": "https://gifs.wigglypaintgif.com/gifs/3.gif",
+    "tags": ["geometric", "dance", "shapes"],
+    "category": "geometric",
+    "createdAt": "2024-01-13",
+    "author": "WigglyPaint",
+    "downloads": 203,
+    "fileSize": 312500,
+    "dimensions": {
+      "width": 800,
+      "height": 600
+    }
+  },
+  {
+    "id": "4",
+    "title": "Liquid Motion",
+    "description": "Fluid liquid-like motion effects",
+    "imageUrl": "https://gifs.wigglypaintgif.com/gifs/4.gif",
+    "thumbnailUrl": "https://gifs.wigglypaintgif.com/gifs/4.gif",
+    "tags": ["liquid", "fluid", "motion"],
+    "category": "motion",
+    "createdAt": "2024-01-12",
+    "author": "WigglyPaint",
+    "downloads": 156,
+    "fileSize": 278900,
+    "dimensions": {
+      "width": 800,
+      "height": 600
+    }
+  },
+  {
+    "id": "5",
+    "title": "Rainbow Spiral",
+    "description": "Spiraling rainbow colors with wiggly distortion",
+    "imageUrl": "https://gifs.wigglypaintgif.com/gifs/5.gif",
+    "thumbnailUrl": "https://gifs.wigglypaintgif.com/gifs/5.gif",
+    "tags": ["rainbow", "spiral", "colorful"],
+    "category": "abstract",
+    "createdAt": "2024-01-11",
+    "author": "WigglyPaint",
+    "downloads": 301,
+    "fileSize": 356700,
+    "dimensions": {
+      "width": 800,
+      "height": 600
+    }
+  },
+  {
+    "id": "6",
+    "title": "Electric Waves",
+    "description": "Electric wave patterns with dynamic movement",
+    "imageUrl": "https://gifs.wigglypaintgif.com/gifs/6.gif",
+    "thumbnailUrl": "https://gifs.wigglypaintgif.com/gifs/6.gif",
+    "tags": ["electric", "waves", "dynamic"],
+    "category": "abstract",
+    "createdAt": "2024-01-10",
+    "author": "WigglyPaint",
+    "downloads": 89,
+    "fileSize": 198400,
+    "dimensions": {
+      "width": 800,
+      "height": 600
+    }
+  }
+]
