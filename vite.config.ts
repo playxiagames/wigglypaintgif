@@ -7,8 +7,8 @@ export default defineConfig({
     port: 3000,
     open: true
   },
-  // GitHub Pages 部署配置
-  base: process.env.NODE_ENV === 'production' ? '/wigglypaintgif.com/' : '/',
+  // GitHub Pages 部署配置 - 使用自定义域名所以 base 为 '/'
+  base: '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets'
