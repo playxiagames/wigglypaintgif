@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <!-- Homepage -->
+
+  <!-- English Pages -->
   <url>
     <loc>https://wigglypaintgif.com/</loc>
-    <lastmod>2024-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/" />
@@ -11,11 +12,9 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/" />
     <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/" />
   </url>
-
-  <!-- Gallery Page -->
   <url>
     <loc>https://wigglypaintgif.com/gallery/</loc>
-    <lastmod>2024-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/gallery/" />
@@ -23,11 +22,9 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/gallery/" />
     <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/gallery/" />
   </url>
-
-  <!-- About Page -->
   <url>
     <loc>https://wigglypaintgif.com/about/</loc>
-    <lastmod>2024-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/about/" />
@@ -35,11 +32,9 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/about/" />
     <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/about/" />
   </url>
-
-  <!-- Stats Page -->
   <url>
     <loc>https://wigglypaintgif.com/stats/</loc>
-    <lastmod>2024-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/stats/" />
@@ -47,11 +42,9 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/stats/" />
     <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/stats/" />
   </url>
-
-  <!-- Terms Page -->
   <url>
     <loc>https://wigglypaintgif.com/terms/</loc>
-    <lastmod>2024-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/terms/" />
@@ -59,11 +52,9 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/terms/" />
     <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/terms/" />
   </url>
-
-  <!-- Privacy Page -->
   <url>
     <loc>https://wigglypaintgif.com/privacy/</loc>
-    <lastmod>2024-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/privacy/" />
@@ -71,11 +62,225 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/privacy/" />
     <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/privacy/" />
   </url>
-
-  <!-- Blog Page -->
   <url>
     <loc>https://wigglypaintgif.com/blog/</loc>
-    <lastmod>2024-09-14</lastmod>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/blog/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/blog/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/blog/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/blog/" />
+  </url>
+
+  <!-- Chinese Pages -->
+  <url>
+    <loc>https://wigglypaintgif.com/zh/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/zh/gallery/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/gallery/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/gallery/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/gallery/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/gallery/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/zh/about/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/about/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/about/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/about/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/zh/stats/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/stats/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/stats/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/stats/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/stats/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/zh/terms/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/terms/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/terms/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/terms/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/terms/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/zh/privacy/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/privacy/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/privacy/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/zh/blog/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/blog/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/blog/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/blog/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/blog/" />
+  </url>
+
+  <!-- Japanese Pages -->
+  <url>
+    <loc>https://wigglypaintgif.com/ja/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/ja/gallery/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/gallery/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/gallery/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/gallery/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/gallery/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/ja/about/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/about/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/about/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/about/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/ja/stats/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/stats/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/stats/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/stats/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/stats/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/ja/terms/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/terms/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/terms/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/terms/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/terms/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/ja/privacy/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/privacy/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/privacy/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/ja/blog/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/blog/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/blog/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/blog/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/blog/" />
+  </url>
+
+  <!-- Korean Pages -->
+  <url>
+    <loc>https://wigglypaintgif.com/ko/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/ko/gallery/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/gallery/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/gallery/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/gallery/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/gallery/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/ko/about/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/about/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/about/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/about/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/ko/stats/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/stats/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/stats/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/stats/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/stats/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/ko/terms/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/terms/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/terms/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/terms/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/terms/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/ko/privacy/</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/privacy/" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wigglypaintgif.com/zh/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wigglypaintgif.com/ja/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wigglypaintgif.com/ko/privacy/" />
+  </url>
+  <url>
+    <loc>https://wigglypaintgif.com/ko/blog/</loc>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://wigglypaintgif.com/blog/" />
