@@ -52,7 +52,8 @@ export default {
     },
     "gallery_preview_title": "놀라운 작품들 탐색",
     "gallery_preview_subtitle": "전 세계 WigglyPaint 사용자들이 만든 놀라운 애니메이션 GIF를 발견하세요",
-    "view_gallery": "전체 갤러리 보기"
+    "view_gallery": "전체 갤러리 보기",
+    "start_creating": "지금 시작하기"
   },
   "gallery": {
     "title": "WigglyPaint 갤러리 - 무료 애니메이션 GIF 다운로드",

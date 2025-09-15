@@ -52,7 +52,8 @@ export default {
     },
     "gallery_preview_title": "探索精彩作品",
     "gallery_preview_subtitle": "发现世界各地WigglyPaint用户创作的精彩动画GIF",
-    "view_gallery": "查看完整图库"
+    "view_gallery": "查看完整图库",
+    "start_creating": "立即开始创作"
   },
   "gallery": {
     "title": "WigglyPaint图库 - 下载免费动画GIF",

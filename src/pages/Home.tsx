@@ -37,7 +37,7 @@ const Home: React.FC = () => {
         </div>
         
         {/* WigglyPaint Tool Embed */}
-        <div className="mb-16">
+        <div className="mb-16" id="wiggly-paint-tool">
           {/* <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6"> */}
             <ToolEmbed
               src="https://gifs.wigglypaintgif.com/WigglyPaint.html"
@@ -48,6 +48,40 @@ const Home: React.FC = () => {
               onError={(error) => console.error('WigglyPaint load error:', error)}
             />
           {/* </div> */}
+        </div>
+
+        {/* Gallery Preview */}
+        <div className="text-center mb-6 sm:mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">
+            {t('home.gallery_preview_title')}
+          </h2>
+          <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8">
+            {t('home.gallery_preview_subtitle')}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-4 mb-8">
+          {previewGifs.map((gif) => (
+            <div key={gif.id} className="aspect-square bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+              <LazyImage
+                src={gif.imageUrl}
+                alt={`WigglyPaint creation ${gif.fileName}`}
+                className="w-full h-full"
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mb-6">
+          <LanguageLink
+            to="/gallery"
+            className="inline-flex items-center px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors shadow-lg hover:shadow-xl"
+          >
+            <span>{t('home.view_gallery')}</span>
+            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </LanguageLink>
         </div>
 
         {/* Introduction Content */}
@@ -141,40 +175,28 @@ const Home: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Gallery Preview */}
-        <div className="text-center mb-6 sm:mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">
-            {t('home.gallery_preview_title')}
-          </h2>
-          <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8">
-            {t('home.gallery_preview_subtitle')}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-4 mb-8">
-          {previewGifs.map((gif) => (
-            <div key={gif.id} className="aspect-square bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-              <LazyImage
-                src={gif.imageUrl}
-                alt={`WigglyPaint creation ${gif.fileName}`}
-                className="w-full h-full"
-              />
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <LanguageLink
-            to="/gallery"
-            className="inline-flex items-center px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors shadow-lg hover:shadow-xl"
-          >
-            <span>{t('home.view_gallery')}</span>
-            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </LanguageLink>
+          {/* Call to Action Button */}
+          <div className="text-center mt-8">
+            <button
+              onClick={() => {
+                const toolElement = document.getElementById('wiggly-paint-tool');
+                if (toolElement) {
+                  toolElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }
+              }}
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold text-lg rounded-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              <span className="mr-2">🎨</span>
+              {t('home.start_creating')}
+              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>

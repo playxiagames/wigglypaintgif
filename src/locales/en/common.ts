@@ -52,7 +52,8 @@ export default {
     },
     "gallery_preview_title": "Explore Amazing Creations",
     "gallery_preview_subtitle": "Discover incredible animated GIFs created by WigglyPaint users worldwide",
-    "view_gallery": "View Full Gallery"
+    "view_gallery": "View Full Gallery",
+    "start_creating": "Start Creating Now"
   },
   "gallery": {
     "title": "WigglyPaint Gallery - Download Free Animated GIFs",

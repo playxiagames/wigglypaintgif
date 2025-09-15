@@ -52,7 +52,8 @@ export default {
     },
     "gallery_preview_title": "素晴らしい作品を探す",
     "gallery_preview_subtitle": "世界中のWigglyPaintユーザーが作成した素晴らしいアニメーションGIFを発見",
-    "view_gallery": "フルギャラリーを見る"
+    "view_gallery": "フルギャラリーを見る",
+    "start_creating": "今すぐ作成開始"
   },
   "gallery": {
     "title": "WigglyPaintギャラリー - 無料アニメーションGIFダウンロード",
