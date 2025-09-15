@@ -3,8 +3,6 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build-and-deploy:
@@ -15,6 +13,7 @@ jobs:
       contents: read
       pages: write
       id-token: write
+      actions: read
 
     steps:
     - name: Checkout
@@ -45,6 +44,15 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v4
 
+    - name: Verify build output
+      run: |
+        ls -la dist/
+        if [ ! -f "dist/index.html" ]; then
+          echo "Error: dist/index.html not found"
+          exit 1
+        fi
+        echo "Build verification successful"
+
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
@@ -53,3 +61,7 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
+      with:
+        timeout: 600000
+        error_count: 10
+        reporting_interval: 5000
