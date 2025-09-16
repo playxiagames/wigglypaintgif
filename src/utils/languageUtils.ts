@@ -40,20 +40,25 @@ export function extractLanguageFromPath(pathname: string): {
  */
 export function buildLanguagePath(path: string, language: SupportedLanguage): string {
   // 确保路径以 / 开头
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-  
+  let normalizedPath = path.startsWith('/') ? path : `/${path}`;
+
+  // 确保非根路径以 / 结尾（SEO最佳实践）
+  if (normalizedPath !== '/' && !normalizedPath.endsWith('/')) {
+    normalizedPath += '/';
+  }
+
   // 如果是默认语言，不添加前缀
   if (language === DEFAULT_LANGUAGE) {
-    return normalizedPath === '/' ? '/' : normalizedPath;
+    return normalizedPath;
   }
-  
+
   // 其他语言添加前缀
   const languagePrefix = LANGUAGE_ROUTES.find(route => route.language === language)?.path || `/${language}`;
-  
+
   if (normalizedPath === '/') {
     return languagePrefix + '/';
   }
-  
+
   return `${languagePrefix}${normalizedPath}`;
 }
 
