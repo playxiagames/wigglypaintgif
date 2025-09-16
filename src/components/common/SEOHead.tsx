@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getHrefLangLinks } from '../../utils/languageUtils';
+import { getHrefLangLinks, extractLanguageFromPath, buildLanguagePath } from '../../utils/languageUtils';
 
 interface SEOHeadProps {
   title: string;
@@ -25,7 +25,14 @@ const SEOHead: React.FC<SEOHeadProps> = ({
 }) => {
   const location = useLocation();
   const baseUrl = 'https://wigglypaintgif.com';
-  const fullCanonical = `${baseUrl}${canonical}`;
+
+  // 从当前路径提取语言信息
+  const { language } = extractLanguageFromPath(location.pathname);
+
+  // 生成正确的带语言前缀的canonical URL
+  // 如果提供的canonical是相对路径，就用当前语言重新构建完整URL
+  const languageCanonical = buildLanguagePath(canonical, language);
+  const fullCanonical = `${baseUrl}${languageCanonical}`;
   const finalOgImage = ogImage || `${baseUrl}/og-image.png`;
   
   useEffect(() => {
