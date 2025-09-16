@@ -1,15 +1,15 @@
-# WigglyPaint 多语言网站技术规格文档
+# Wiggly Paint 多语言网站技术规格文档
 
 ## 📋 项目概述
 
 ### 项目名称
-WigglyPaint 多语言 GIF 生成工具网站
+Wiggly Paint 多语言 GIF 生成工具网站
 
 ### 项目目标
-创建一个简洁高效的多语言响应式网站，以 WigglyPaint GIF 生成工具为核心，提供工具使用和作品展示功能。
+创建一个简洁高效的多语言响应式网站，以 Wiggly Paint GIF 生成工具为核心，提供工具使用和作品展示功能。
 
 ### 核心价值主张
-- 🎨 集成 WigglyPaint GIF 生成工具
+- 🎨 集成 Wiggly Paint GIF 生成工具
 - 🌍 支持四种语言的国际化体验
 - 📱 移动优先的响应式设计
 - 🖼️ 简洁的作品展示功能
@@ -56,7 +56,7 @@ App
 │   ├── Main (Page Content)
 │   └── Footer
 ├── Pages
-│   ├── Home (WigglyPaint Tool)
+│   ├── Home (Wiggly Paint Tool)
 │   ├── Gallery (GIF Showcase)
 │   └── About (Information)  
 └── Common Components
@@ -319,8 +319,8 @@ const STATIC_ASSETS = [
 
 ### Meta 标签
 ```html
-<meta name="description" content="Create amazing animated GIFs with WigglyPaint tool">
-<meta property="og:title" content="WigglyPaint - Animated GIF Creator">
+<meta name="description" content="Create amazing animated GIFs with Wiggly Paint tool">
+<meta property="og:title" content="Wiggly Paint - Animated GIF Creator">
 <meta property="og:description" content="Create amazing animated GIFs">
 <meta property="og:image" content="/og-image.jpg">
 ```
@@ -330,7 +330,7 @@ const STATIC_ASSETS = [
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "WigglyPaint",
+  "name": "Wiggly Paint",
   "description": "Animated GIF creation tool",
   "url": "https://wigglypaintgif.com"
 }
@@ -341,8 +341,8 @@ const STATIC_ASSETS = [
 ### Manifest 配置
 ```json
 {
-  "name": "WigglyPaint",
-  "short_name": "WigglyPaint",
+  "name": "Wiggly Paint",
+  "short_name": "Wiggly Paint",
   "description": "Animated GIF Creator",
   "start_url": "/",
   "display": "standalone",
@@ -485,7 +485,7 @@ export default defineConfig({
 - [ ] 实现响应式布局基础框架
 
 #### 2. 核心工具功能实现
-- [ ] 设计和实现WigglyPaint工具嵌入页面
+- [ ] 设计和实现Wiggly Paint工具嵌入页面
 - [ ] 创建iframe容器组件用于嵌入外部工具
 - [ ] 实现工具页面的响应式设计
 - [ ] 添加加载状态和错误处理
@@ -533,9 +533,9 @@ export default defineConfig({
 ## 📊 开发里程碑总结
 
 ### 第一阶段：MVP 核心功能 (2-3 周)
-**目标**: 完成基础的WigglyPaint工具嵌入和Gallery展示功能
+**目标**: 完成基础的Wiggly Paint工具嵌入和Gallery展示功能
 - 项目初始化和基础架构 ✅
-- WigglyPaint 工具嵌入
+- Wiggly Paint 工具嵌入
 - 基础 Gallery 展示
 - 基础导航系统
 
@@ -558,7 +558,7 @@ export default defineConfig({
 ## 🎯 任务优先级说明
 
 ### 高优先级 (必须完成)
-1. WigglyPaint工具嵌入功能
+1. Wiggly Paint工具嵌入功能
 2. Gallery基础展示功能
 3. 多语言支持
 4. 响应式设计
@@ -580,7 +580,7 @@ export default defineConfig({
 
 ### 开发顺序建议
 1. **先搭建基础架构**：确保项目结构清晰，开发环境配置完善
-2. **核心功能优先**：WigglyPaint嵌入是项目的核心价值
+2. **核心功能优先**：Wiggly Paint嵌入是项目的核心价值
 3. **渐进式增强**：从基础功能开始，逐步添加高级特性
 4. **移动优先**：确保在移动设备上的良好体验
 5. **性能考虑**：在开发过程中持续关注性能指标

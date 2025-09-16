@@ -29,7 +29,7 @@ const About: React.FC = () => {
             </p>
           </div>
 
-          {/* What is WigglyPaint */}
+          {/* What is Wiggly Paint */}
           <div className="bg-blue-50 rounded-2xl p-6 sm:p-8 mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
               {t('about_content.what_is_title')}

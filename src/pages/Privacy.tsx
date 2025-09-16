@@ -36,7 +36,7 @@ const Privacy: React.FC = () => {
                 Privacy-First Approach
               </h2>
               <p className="text-green-800 text-lg">
-                <strong>Your privacy is our priority.</strong> WigglyPaint is designed with privacy in mind. 
+                <strong>Your privacy is our priority.</strong> Wiggly Paint is designed with privacy in mind. 
                 Your drawings and creations never leave your device, and we collect minimal data to provide our service.
               </p>
             </div>
@@ -44,7 +44,7 @@ const Privacy: React.FC = () => {
             {/* 1. Information We DON'T Collect */}
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Information We DON'T Collect</h2>
-              <p className="mb-4">WigglyPaint is designed to protect your privacy. We do NOT collect:</p>
+              <p className="mb-4">Wiggly Paint is designed to protect your privacy. We do NOT collect:</p>
               <ul className="list-disc list-inside space-y-2 mb-4 text-green-700">
                 <li><strong>Your artwork or drawings</strong> - All creations remain on your device</li>
                 <li><strong>Personal information</strong> - No names, emails, or personal details required</li>
@@ -153,7 +153,7 @@ const Privacy: React.FC = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">7. Children's Privacy</h2>
               <p className="mb-4">
-                WigglyPaint is safe for children to use. We don't collect personal information from anyone, 
+                Wiggly Paint is safe for children to use. We don't collect personal information from anyone, 
                 including children under 13. The tool works entirely in the browser without requiring 
                 any personal data.
               </p>
@@ -163,7 +163,7 @@ const Privacy: React.FC = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">8. International Users</h2>
               <p className="mb-4">
-                WigglyPaint is accessible worldwide. Since your artwork never leaves your device, 
+                Wiggly Paint is accessible worldwide. Since your artwork never leaves your device, 
                 there are no international data transfer concerns. Any analytics data follows 
                 standard international privacy practices.
               </p>
@@ -198,7 +198,7 @@ const Privacy: React.FC = () => {
                 🛡️ Our Commitment to Your Privacy
               </h3>
               <p className="text-blue-800">
-                Privacy isn't just a policy for us—it's a core design principle. WigglyPaint was built 
+                Privacy isn't just a policy for us—it's a core design principle. Wiggly Paint was built 
                 to let you create freely without worrying about data collection or privacy invasion. 
                 Your creativity is yours alone.
               </p>

@@ -85,16 +85,16 @@ const Home: React.FC = () => {
           </p>
         </div>
         
-        {/* WigglyPaint Tool Embed */}
+        {/* Wiggly Paint Tool Embed */}
         <div className="mb-16" id="wiggly-paint-tool">
           {/* <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6"> */}
             <ToolEmbed
               src="https://gifs.wigglypaintgif.com/WigglyPaint.html"
-              title="WigglyPaint - Animated GIF Creator"
+              title="Wiggly Paint - Animated GIF Creator"
               allowFullscreen={true}
               loadingTimeout={8000}
-              onLoad={() => console.log('WigglyPaint tool loaded')}
-              onError={(error) => console.error('WigglyPaint load error:', error)}
+              onLoad={() => console.log('Wiggly Paint tool loaded')}
+              onError={(error) => console.error('Wiggly Paint load error:', error)}
             />
           {/* </div> */}
         </div>
@@ -114,7 +114,7 @@ const Home: React.FC = () => {
             <div key={gif.id} className="aspect-square bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
               <LazyImage
                 src={gif.imageUrl}
-                alt={`WigglyPaint creation ${gif.fileName}`}
+                alt={`Wiggly Paint creation ${gif.fileName}`}
                 className="w-full h-full"
               />
             </div>

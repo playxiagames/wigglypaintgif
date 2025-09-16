@@ -111,7 +111,7 @@ const Contact: React.FC = () => {
                   Need More Help?
                 </h3>
                 <p className="text-blue-800">
-                  Visit our <a href="/about" className="underline hover:text-blue-600">About page</a> to learn more about WigglyPaint features, 
+                  Visit our <a href="/about" className="underline hover:text-blue-600">About page</a> to learn more about Wiggly Paint features, 
                   or check the <a href="/gallery" className="underline hover:text-blue-600">Gallery</a> for inspiration and examples.
                 </p>
               </div>

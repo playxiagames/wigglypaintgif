@@ -68,7 +68,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     // Basic meta tags
     updateMetaTag('description', description);
     updateMetaTag('robots', 'index, follow');
-    updateMetaTag('author', 'WigglyPaint GIF Creator');
+    updateMetaTag('author', 'Wiggly Paint GIF Creator');
 
     // Open Graph tags
     updateMetaTag('og:type', type, true);
@@ -76,7 +76,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     updateMetaTag('og:title', ogTitle || title, true);
     updateMetaTag('og:description', ogDescription || description, true);
     updateMetaTag('og:image', finalOgImage, true);
-    updateMetaTag('og:site_name', 'WigglyPaint GIF Creator', true);
+    updateMetaTag('og:site_name', 'Wiggly Paint GIF Creator', true);
 
     // Twitter tags
     updateMetaTag('twitter:card', 'summary_large_image', true);

@@ -35,7 +35,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <LanguageLink to="/" className="flex items-center space-x-2">
             <div className="text-2xl">🎨</div>
-            <span className="text-xl font-bold text-gray-900">WigglyPaint</span>
+            <span className="text-xl font-bold text-gray-900">Wiggly Paint</span>
           </LanguageLink>
 
           {/* Desktop Navigation */}

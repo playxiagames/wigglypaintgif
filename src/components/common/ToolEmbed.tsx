@@ -15,7 +15,7 @@ interface ToolEmbedProps {
 
 const ToolEmbed: React.FC<ToolEmbedProps> = ({
   src = "https://gifs.wigglypaintgif.com/WigglyPaint.html",
-  title = "WigglyPaint Tool",
+  title = "Wiggly Paint Tool",
   width = "100%",
   height = "600px",
   allowFullscreen = true,
@@ -198,7 +198,7 @@ const ToolEmbed: React.FC<ToolEmbedProps> = ({
         {isLoading && (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm z-10">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500 mb-2"></div>
-            <p className="text-sm text-gray-600">Loading WigglyPaint tool...</p>
+            <p className="text-sm text-gray-600">Loading Wiggly Paint tool...</p>
           </div>
         )}
 
@@ -247,7 +247,7 @@ const ToolEmbed: React.FC<ToolEmbedProps> = ({
               sandbox={sandbox}
               allowFullScreen={allowFullscreen}
               onLoad={handleLoad}
-              onError={() => handleError("Failed to load the WigglyPaint tool")}
+              onError={() => handleError("Failed to load the Wiggly Paint tool")}
               className={`border-0 tool-embed-iframe ${isLoading || hasError ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
               style={{
                 display: 'block',

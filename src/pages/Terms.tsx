@@ -32,7 +32,7 @@ const Terms: React.FC = () => {
             {/* Introduction */}
             <div className="mb-8">
               <p className="text-lg leading-relaxed">
-                Welcome to WigglyPaint GIF Creator. By using our service, you agree to these terms. 
+                Welcome to Wiggly Paint GIF Creator. By using our service, you agree to these terms. 
                 Please read them carefully as they govern your use of our animated GIF creation tool.
               </p>
             </div>
@@ -41,11 +41,11 @@ const Terms: React.FC = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Service Description</h2>
               <p className="mb-4">
-                WigglyPaint is a free online drawing tool that allows users to create animated GIFs with unique wiggling effects. 
+                Wiggly Paint is a free online drawing tool that allows users to create animated GIFs with unique wiggling effects. 
                 Our service includes:
               </p>
               <ul className="list-disc list-inside space-y-2 mb-4">
-                <li>Access to the WigglyPaint drawing tool</li>
+                <li>Access to the Wiggly Paint drawing tool</li>
                 <li>8 unique animated brushes with sound effects</li>
                 <li>GIF export functionality</li>
                 <li>Gallery of user-created content</li>
@@ -56,7 +56,7 @@ const Terms: React.FC = () => {
             {/* 2. User Responsibilities */}
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. User Responsibilities</h2>
-              <p className="mb-4">When using WigglyPaint, you agree to:</p>
+              <p className="mb-4">When using Wiggly Paint, you agree to:</p>
               <ul className="list-disc list-inside space-y-2 mb-4">
                 <li>Use the service for lawful purposes only</li>
                 <li>Not create content that is offensive, harmful, or violates others' rights</li>
@@ -74,7 +74,7 @@ const Terms: React.FC = () => {
                 We do not store, collect, or have access to your artwork.
               </p>
               <p className="mb-4">
-                <strong>Content Ownership:</strong> You retain full ownership of any content you create using WigglyPaint.
+                <strong>Content Ownership:</strong> You retain full ownership of any content you create using Wiggly Paint.
               </p>
               <p className="mb-4">
                 <strong>Usage Analytics:</strong> We may collect anonymized usage statistics to improve our service, 
@@ -100,7 +100,7 @@ const Terms: React.FC = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">5. Disclaimer of Warranties</h2>
               <p className="mb-4">
-                WigglyPaint is provided free of charge "as is" without warranties of any kind. 
+                Wiggly Paint is provided free of charge "as is" without warranties of any kind. 
                 We do not guarantee that the service will meet your requirements or be error-free.
               </p>
             </section>
@@ -110,7 +110,7 @@ const Terms: React.FC = () => {
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">6. Limitation of Liability</h2>
               <p className="mb-4">
                 To the maximum extent permitted by law, we shall not be liable for any indirect, 
-                incidental, special, or consequential damages arising from your use of WigglyPaint.
+                incidental, special, or consequential damages arising from your use of Wiggly Paint.
               </p>
             </section>
 
@@ -118,7 +118,7 @@ const Terms: React.FC = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">7. Third-Party Services</h2>
               <p className="mb-4">
-                WigglyPaint is based on the original tool created by Internet Janitor. 
+                Wiggly Paint is based on the original tool created by Internet Janitor. 
                 We are grateful for their contribution to the creative community. 
                 Our service may integrate with third-party analytics services to improve user experience.
               </p>
@@ -147,7 +147,7 @@ const Terms: React.FC = () => {
             {/* Footer Note */}
             <div className="border-t border-gray-200 pt-8 mt-12">
               <p className="text-center text-gray-500 text-sm">
-                By using WigglyPaint, you acknowledge that you have read, understood, 
+                By using Wiggly Paint, you acknowledge that you have read, understood, 
                 and agree to be bound by these Terms of Service.
               </p>
             </div>

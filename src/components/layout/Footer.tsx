@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <div className="text-2xl">🎨</div>
-              <span className="text-2xl font-bold">WigglyPaint</span>
+              <span className="text-2xl font-bold">Wiggly Paint</span>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed max-w-md">
               {t('footer.description')}

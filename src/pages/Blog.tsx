@@ -6,8 +6,8 @@ const Blog: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <SEOHead
-        title="WigglyPaint Blog - Coming Soon"
-        description="The WigglyPaint blog is coming soon! Stay tuned for tutorials, tips, and inspiration for creating amazing animated GIFs."
+        title="Wiggly Paint Blog - Coming Soon"
+        description="The Wiggly Paint blog is coming soon! Stay tuned for tutorials, tips, and inspiration for creating amazing animated GIFs."
         canonical="/blog/"
         type="website"
       />
@@ -17,7 +17,7 @@ const Blog: React.FC = () => {
           {/* Header */}
           <div className="mb-12">
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              WigglyPaint Blog
+              Wiggly Paint Blog
             </h1>
             <p className="text-lg text-gray-600">
               Coming Soon!
@@ -32,7 +32,7 @@ const Blog: React.FC = () => {
             </h2>
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
               We're working on creating amazing content about animated GIF creation, 
-              WigglyPaint tutorials, and digital art inspiration. Stay tuned!
+              Wiggly Paint tutorials, and digital art inspiration. Stay tuned!
             </p>
 
             {/* What's Coming */}
@@ -60,7 +60,7 @@ const Blog: React.FC = () => {
                 to="/" 
                 className="inline-flex items-center px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors shadow-lg hover:shadow-xl mr-4"
               >
-                Try WigglyPaint Now
+                Try Wiggly Paint Now
               </LanguageLink>
               <LanguageLink 
                 to="/gallery" 
