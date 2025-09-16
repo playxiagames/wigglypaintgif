@@ -58,7 +58,7 @@ export default {
   "gallery": {
     "title": "WigglyPaint图库 - 下载免费动画GIF",
     "subtitle": "浏览并下载使用WigglyPaint创作的精彩动画GIF",
-    "description": "探索我们收集的250+免费动画GIF，全部使用WigglyPaint摆动效果创作。为您的项目、设计或创意表达下载高质量的动画GIF，涵盖各种风格和主题。所有GIF均可免费商用，无版权限制。",
+    "description": "探索我们收集的290+免费动画GIF，全部使用WigglyPaint摆动效果创作。为您的项目、设计或创意表达下载高质量的动画GIF，涵盖各种风格和主题。所有GIF均可免费商用，无版权限制。",
     "stats_gifs": "个GIF可用",
     "stats_downloads": "总下载量",
     "showing": "显示",
@@ -143,5 +143,29 @@ export default {
     "powered_by": "基于Internet Janitor的WigglyPaint",
     "original_tool": "原始工具",
     "official_site": "官方网站"
+  },
+  "languageSuggestion": {
+    "highConfidence": "强烈推荐",
+    "recommend": "推荐",
+    "suggest": "建议",
+    "close": "关闭",
+    "title": "切换到{{language}}？",
+    "detectedLocation": "我们检测到您可能来自{{country}}，建议您使用{{language}}获得更好的体验。",
+    "betterExperience": "建议您使用{{language}}获得更好的体验。",
+    "switchTo": "切换到{{language}}",
+    "keepCurrent": "保持当前",
+    "highConfidenceIndicator": "高置信度推荐",
+    "confidence": "置信度",
+    "countries": {
+      "KR": "韩国",
+      "JP": "日本",
+      "CN": "中国",
+      "TW": "台湾",
+      "HK": "香港",
+      "TH": "泰国",
+      "VN": "越南",
+      "MY": "马来西亚",
+      "ES": "西班牙"
+    }
   }
 }

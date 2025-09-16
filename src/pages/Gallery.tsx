@@ -6,7 +6,7 @@ import SimpleGalleryGrid from '../components/gallery/SimpleGalleryGrid';
 
 const Gallery: React.FC = () => {
   const { t } = useTranslation();
-  const { items, trackDownload, getTotalDownloads, totalItems } = useSimpleGallery(250);
+  const { items, trackDownload, getTotalDownloads, totalItems } = useSimpleGallery(290);
 
   const totalDownloads = getTotalDownloads();
 

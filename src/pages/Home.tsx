@@ -1,21 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LanguageLink from '../components/routing/LanguageLink';
 import { useTranslation } from 'react-i18next';
 import ToolEmbed from '../components/common/ToolEmbed';
 import SEOHead from '../components/common/SEOHead';
+import LanguageSuggestion from '../components/common/LanguageSuggestion';
+import LanguageDetectionDebug from '../components/dev/LanguageDetectionDebug';
 import { useSimpleGallery } from '../hooks/useSimpleGallery';
+import { useLanguageDetection } from '../hooks/useLanguageDetection';
+import { useLanguageRouter } from '../hooks/useLanguageRouter';
 import LazyImage from '../components/gallery/LazyImage';
 import { formatParagraph, formatListItem } from '../utils/textFormatter';
+import { SupportedLanguage } from '../types';
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
-  const { items } = useSimpleGallery(250);
-  
+  const { items } = useSimpleGallery(290);
+  const [showLanguageSuggestion, setShowLanguageSuggestion] = useState(true);
+
   // 获取前24个GIF作为预览
   const previewGifs = items.slice(0, 24);
 
+  // 智能语言检测
+  const {
+    suggestedLanguage,
+    confidence,
+    userCountry,
+    shouldShowSuggestion,
+  } = useLanguageDetection();
+
+  // 语言路由系统
+  const { changeLanguage } = useLanguageRouter();
+
+  // 处理语言切换
+  const handleLanguageAccept = async (language: string) => {
+    try {
+      // 使用正确的语言切换方法，会自动更新URL
+      changeLanguage(language as SupportedLanguage);
+      setShowLanguageSuggestion(false);
+    } catch (error) {
+      console.error('Failed to change language:', error);
+    }
+  };
+
+  // 处理语言建议忽略
+  const handleLanguageDismiss = () => {
+    setShowLanguageSuggestion(false);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      {/* Language Suggestion */}
+      {shouldShowSuggestion &&
+       showLanguageSuggestion &&
+       suggestedLanguage && (
+        <LanguageSuggestion
+          suggestedLanguage={suggestedLanguage}
+          confidence={confidence}
+          userCountry={userCountry}
+          onAccept={handleLanguageAccept}
+          onDismiss={handleLanguageDismiss}
+        />
+      )}
+
+      {/* Language Detection Debug Tool (Development Only) */}
+      <LanguageDetectionDebug />
+
       <SEOHead
         title={t('home.title')}
         description={t('home.description')}

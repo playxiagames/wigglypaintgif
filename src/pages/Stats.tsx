@@ -5,7 +5,7 @@ import { useSimpleGallery } from '../hooks/useSimpleGallery';
 
 const Stats: React.FC = () => {
   const { t } = useTranslation();
-  const { getPopularDownloads, getTotalDownloads, totalItems } = useSimpleGallery(250);
+  const { getPopularDownloads, getTotalDownloads, totalItems } = useSimpleGallery(290);
   
   const popularGifs = getPopularDownloads(20); // 显示前20名
   const totalDownloads = getTotalDownloads();

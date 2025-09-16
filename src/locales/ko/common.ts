@@ -58,7 +58,7 @@ export default {
   "gallery": {
     "title": "WigglyPaint 갤러리 - 무료 애니메이션 GIF 다운로드",
     "subtitle": "WigglyPaint로 만든 놀라운 애니메이션 GIF를 탐색하고 다운로드하세요",
-    "description": "WigglyPaint로 만든 250개 이상의 멋진 무료 애니메이션 GIF 컬렉션을 탐색해보세요. 프로젝트, 디자인, 창의적 표현을 위한 고품질 흔들림 애니메이션을 다운로드하세요. 다양한 스타일과 테마를 포함하며, 모든 GIF가 무료 상용 이용 가능하고 저작권 제한 없음.",
+    "description": "WigglyPaint로 만든 290개 이상의 멋진 무료 애니메이션 GIF 컬렉션을 탐색해보세요. 프로젝트, 디자인, 창의적 표현을 위한 고품질 흔들림 애니메이션을 다운로드하세요. 다양한 스타일과 테마를 포함하며, 모든 GIF가 무료 상용 이용 가능하고 저작권 제한 없음.",
     "stats_gifs": "개의 GIF 사용 가능",
     "stats_downloads": "총 다운로드",
     "showing": "표시 중",
@@ -143,5 +143,29 @@ export default {
     "powered_by": "Internet Janitor의 WigglyPaint 제공",
     "original_tool": "원본 도구",
     "official_site": "공식 사이트"
+  },
+  "languageSuggestion": {
+    "highConfidence": "강력 추천",
+    "recommend": "추천",
+    "suggest": "제안",
+    "close": "닫기",
+    "title": "{{language}}로 전환하시겠습니까?",
+    "detectedLocation": "{{country}}에서 접속하신 것으로 보입니다. 더 나은 경험을 위해 {{language}}를 사용하시길 권합니다.",
+    "betterExperience": "더 나은 경험을 위해 {{language}}를 사용하시길 권합니다.",
+    "switchTo": "{{language}}로 전환",
+    "keepCurrent": "현재 언어 유지",
+    "highConfidenceIndicator": "높은 신뢰도 추천",
+    "confidence": "신뢰도",
+    "countries": {
+      "KR": "한국",
+      "JP": "일본",
+      "CN": "중국",
+      "TW": "대만",
+      "HK": "홍콩",
+      "TH": "태국",
+      "VN": "베트남",
+      "MY": "말레이시아",
+      "ES": "스페인"
+    }
   }
 }

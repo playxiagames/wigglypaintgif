@@ -58,7 +58,7 @@ export default {
   "gallery": {
     "title": "WigglyPaint Gallery - Download Free Animated GIFs",
     "subtitle": "Browse and download amazing animated GIFs created with WigglyPaint",
-    "description": "Explore 250+ free animated GIFs created with WigglyPaint. Download high-quality wiggling animations for your projects. All GIFs are free to use.",
+    "description": "Explore 290+ free animated GIFs created with WigglyPaint. Download high-quality wiggling animations for your projects. All GIFs are free to use.",
     "stats_gifs": "GIFs available",
     "stats_downloads": "total downloads",
     "showing": "Showing",
@@ -143,5 +143,29 @@ export default {
     "powered_by": "Powered by Internet Janitor's WigglyPaint",
     "original_tool": "Original Tool",
     "official_site": "Official Site"
+  },
+  "languageSuggestion": {
+    "highConfidence": "Highly Recommended",
+    "recommend": "Recommended",
+    "suggest": "Suggested",
+    "close": "Close",
+    "title": "Switch to {{language}}?",
+    "detectedLocation": "We detected you might be from {{country}}, we recommend using {{language}} for a better experience.",
+    "betterExperience": "We recommend using {{language}} for a better experience.",
+    "switchTo": "Switch to {{language}}",
+    "keepCurrent": "Keep Current",
+    "highConfidenceIndicator": "High Confidence Recommendation",
+    "confidence": "Confidence",
+    "countries": {
+      "KR": "South Korea",
+      "JP": "Japan",
+      "CN": "China",
+      "TW": "Taiwan",
+      "HK": "Hong Kong",
+      "TH": "Thailand",
+      "VN": "Vietnam",
+      "MY": "Malaysia",
+      "ES": "Spain"
+    }
   }
 }

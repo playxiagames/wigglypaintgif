@@ -58,7 +58,7 @@ export default {
   "gallery": {
     "title": "WigglyPaintギャラリー - 無料アニメーションGIFダウンロード",
     "subtitle": "WigglyPaintで作成された素晴らしいアニメーションGIFを閲覧・ダウンロード",
-    "description": "WigglyPaintで作成された250以上の素晴らしい無料アニメーションGIFコレクションを探索しましょう。プロジェクト、デザイン、クリエイティブ表現のための高品質ウィグルアニメーションをダウンロード。様々なスタイルとテーマをカバーし、すべてのGIFが無料商用利用可能で著作権制限なし。",
+    "description": "WigglyPaintで作成された290以上の素晴らしい無料アニメーションGIFコレクションを探索しましょう。プロジェクト、デザイン、クリエイティブ表現のための高品質ウィグルアニメーションをダウンロード。様々なスタイルとテーマをカバーし、すべてのGIFが無料商用利用可能で著作権制限なし。",
     "stats_gifs": "個のGIF利用可能",
     "stats_downloads": "総ダウンロード数",
     "showing": "表示中",
@@ -143,5 +143,29 @@ export default {
     "powered_by": "Internet JanitorのWigglyPaintによる",
     "original_tool": "オリジナルツール",
     "official_site": "公式サイト"
+  },
+  "languageSuggestion": {
+    "highConfidence": "強く推奨",
+    "recommend": "推奨",
+    "suggest": "提案",
+    "close": "閉じる",
+    "title": "{{language}}に切り替えますか？",
+    "detectedLocation": "{{country}}からのアクセスを検出しました。より良い体験のために{{language}}の使用をお勧めします。",
+    "betterExperience": "より良い体験のために{{language}}の使用をお勧めします。",
+    "switchTo": "{{language}}に切り替え",
+    "keepCurrent": "現在の言語を維持",
+    "highConfidenceIndicator": "高信頼度推奨",
+    "confidence": "信頼度",
+    "countries": {
+      "KR": "韓国",
+      "JP": "日本",
+      "CN": "中国",
+      "TW": "台湾",
+      "HK": "香港",
+      "TH": "タイ",
+      "VN": "ベトナム",
+      "MY": "マレーシア",
+      "ES": "スペイン"
+    }
   }
 }

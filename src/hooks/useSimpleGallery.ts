@@ -10,7 +10,7 @@ interface DownloadStats {
   };
 }
 
-export const useSimpleGallery = (totalGifs: number = 250) => {
+export const useSimpleGallery = (totalGifs: number = 290) => {
   // 生成GIF数据
   const items = useMemo(() => generateSimpleGifData(totalGifs), [totalGifs]);
   

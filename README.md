@@ -78,7 +78,7 @@ wigglypaintgif.com/
 ## 🖼️ Gallery 功能 (简化版)
 
 - **纯净展示** - 无复杂搜索过滤，专注浏览体验
-- **分页加载** - 支持 250+ GIF，每页 20 个，性能优化
+- **分页加载** - 支持 290+ GIF，每页 20 个，性能优化
 - **懒加载** - 图片懒加载，提升加载速度
 - **一键下载** - 三级下载策略，确保下载成功
 - **下载统计** - 本地统计 + Google Analytics 跟踪
@@ -167,7 +167,7 @@ console.log('Testing download functionality...');
 
 ### 自定义配置
 在 `src/types/simple.ts` 中的 `generateSimpleGifData()` 函数中修改：
-- GIF 总数量 (默认 250)
+- GIF 总数量 (默认 290)
 - CDN 基础地址
 - 默认文件尺寸
 
