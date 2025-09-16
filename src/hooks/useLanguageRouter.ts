@@ -75,16 +75,31 @@ export function useLanguageRouter(): LanguageRouterContext {
 
 
   /**
-   * 处理URL变化时的语言同步
+   * 处理URL变化时的语言同步（包括初始加载）
    */
   useEffect(() => {
     const { language } = extractLanguageFromPath(location.pathname);
-    
-    if (language !== currentLanguage) {
-      setCurrentLanguage(language);
-      i18n.changeLanguage(language);
-      
-      // 保存用户选择的语言偏好
+
+    // 检查state是否需要更新
+    const needsStateUpdate = language !== currentLanguage;
+
+    // 检查i18n是否需要更新
+    const needsI18nUpdate = i18n.language !== language;
+
+    if (needsStateUpdate || needsI18nUpdate) {
+      console.log(`语言同步: URL=${language}, currentState=${currentLanguage}, i18n=${i18n.language}`);
+
+      // 更新state
+      if (needsStateUpdate) {
+        setCurrentLanguage(language);
+      }
+
+      // 更新i18n
+      if (needsI18nUpdate) {
+        i18n.changeLanguage(language);
+      }
+
+      // 保存用户语言偏好
       saveLanguagePreference(language);
     }
   }, [location.pathname, currentLanguage, i18n]);
