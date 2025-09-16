@@ -32,12 +32,12 @@ const Gallery: React.FC = () => {
           </p>
           
           {/* 统计信息 */}
-          <div className="flex justify-center gap-4 sm:gap-8 text-sm text-gray-500">
+          {/* <div className="flex justify-center gap-4 sm:gap-8 text-sm text-gray-500">
             <span>📁 {totalItems} {t('gallery.stats_gifs')}</span>
             {totalDownloads > 0 && (
               <span>📥 {totalDownloads} {t('gallery.stats_downloads')}</span>
             )}
-          </div>
+          </div> */}
         </div>
 
         {/* Gallery Grid */}

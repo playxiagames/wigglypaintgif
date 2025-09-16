@@ -180,16 +180,7 @@ const SimpleGalleryGrid: React.FC<SimpleGalleryGridProps> = ({ items, className 
 
   return (
     <div className={`w-full ${className}`}>
-      {/* 页面信息 */}
-      <div className="mb-6 text-center">
-        <p className="text-gray-600">
-          Showing {startIndex + 1}-{Math.min(endIndex, items.length)} of {items.length} GIFs
-        </p>
-        <p className="text-sm text-gray-500 mt-1">
-          Page {currentPage} of {totalPages}
-        </p>
-      </div>
-
+      
       {/* 图片网格 */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 mb-8">
         {currentItems.map((item) => (
@@ -247,6 +238,16 @@ const SimpleGalleryGrid: React.FC<SimpleGalleryGridProps> = ({ items, className 
           </button>
         </div>
       )}
+
+      {/* 页面信息 */}
+      <div className="mt-6 text-center">
+        <p className="text-gray-600">
+          Showing {startIndex + 1}-{Math.min(endIndex, items.length)} of {items.length} GIFs
+        </p>
+        {/* <p className="text-sm text-gray-500 mt-1">
+          Page {currentPage} of {totalPages}
+        </p> */}
+      </div>
     </div>
   );
 };
