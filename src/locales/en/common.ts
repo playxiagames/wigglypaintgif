@@ -51,9 +51,10 @@ export default {
       "mobile_content": "Absolutely! Wiggly Paint works seamlessly on smartphones, tablets, and desktop computers with touch and mouse input."
     },
     "gallery_preview_title": "Explore Amazing Creations",
-    "gallery_preview_subtitle": "Discover incredible animated GIFs created by Wiggly Paint users worldwide",
+    "gallery_preview_subtitle": "Discover and download incredible animated GIFs created by Wiggly Paint users worldwide",
     "view_gallery": "View Full Gallery",
-    "start_creating": "Start Creating Now"
+    "start_creating": "Start Creating Now",
+    "download": "Download"
   },
   "gallery": {
     "title": "Wiggly Paint Gallery - Download Free Animated GIFs",

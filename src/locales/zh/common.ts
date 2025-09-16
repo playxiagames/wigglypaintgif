@@ -51,9 +51,10 @@ export default {
       "mobile_content": "当然可以！Wiggly Paint在智能手机、平板电脑和台式电脑上都能无缝运行，支持触摸和鼠标输入。"
     },
     "gallery_preview_title": "探索精彩作品",
-    "gallery_preview_subtitle": "发现世界各地Wiggly Paint用户创作的精彩动画GIF",
+    "gallery_preview_subtitle": "发现并下载世界各地Wiggly Paint用户创作的精彩动画GIF",
     "view_gallery": "查看完整图库",
-    "start_creating": "立即开始创作"
+    "start_creating": "立即开始创作",
+    "download": "下载"
   },
   "gallery": {
     "title": "Wiggly Paint图库 - 下载免费动画GIF",

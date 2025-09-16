@@ -51,9 +51,10 @@ export default {
       "mobile_content": "물론입니다! Wiggly Paint는 터치와 마우스 입력으로 스마트폰, 태블릿, 데스크톱 컴퓨터에서 원활하게 작동합니다."
     },
     "gallery_preview_title": "놀라운 작품들 탐색",
-    "gallery_preview_subtitle": "전 세계 Wiggly Paint 사용자들이 만든 놀라운 애니메이션 GIF를 발견하세요",
+    "gallery_preview_subtitle": "전 세계 Wiggly Paint 사용자들이 만든 놀라운 애니메이션 GIF를 발견하고 다운로드하세요",
     "view_gallery": "전체 갤러리 보기",
-    "start_creating": "지금 시작하기"
+    "start_creating": "지금 시작하기",
+    "download": "다운로드"
   },
   "gallery": {
     "title": "Wiggly Paint 갤러리 - 무료 애니메이션 GIF 다운로드",

@@ -8,17 +8,16 @@ import LanguageDetectionDebug from '../components/dev/LanguageDetectionDebug';
 import { useSimpleGallery } from '../hooks/useSimpleGallery';
 import { useLanguageDetection } from '../hooks/useLanguageDetection';
 import { useLanguageRouter } from '../hooks/useLanguageRouter';
-import LazyImage from '../components/gallery/LazyImage';
 import { formatParagraph, formatListItem } from '../utils/textFormatter';
 import { SupportedLanguage } from '../types';
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
-  const { items } = useSimpleGallery(290);
+  const { items, trackDownload } = useSimpleGallery(290);
   const [showLanguageSuggestion, setShowLanguageSuggestion] = useState(true);
 
-  // 获取前24个GIF作为预览
-  const previewGifs = items.slice(0, 24);
+  // 获取前18个GIF作为预览 (3行 x 6列)
+  const previewGifs = items.slice(0, 18);
 
   // 智能语言检测
   const {
@@ -109,14 +108,46 @@ const Home: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-4 mb-8">
-          {previewGifs.map((gif) => (
-            <div key={gif.id} className="aspect-square bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-              <LazyImage
-                src={gif.imageUrl}
-                alt={`Wiggly Paint creation ${gif.fileName}`}
-                className="w-full h-full"
-              />
+        {/* 首页预览图库 - 自定义网格 */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 mb-8">
+          {previewGifs.map((item) => (
+            <div
+              key={item.id}
+              className="group relative bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <div className="relative">
+                <img
+                  src={item.imageUrl}
+                  alt={`Wiggly Paint creation ${item.fileName}`}
+                  className="w-full h-48 object-cover rounded-t-lg"
+                  loading="lazy"
+                />
+
+                {/* 下载悬浮层 */}
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition-opacity duration-300">
+                  <button
+                    onClick={() => {
+                      // 创建下载链接
+                      const a = document.createElement('a');
+                      a.href = item.imageUrl;
+                      a.download = item.fileName;
+                      a.style.display = 'none';
+                      document.body.appendChild(a);
+                      a.click();
+                      document.body.removeChild(a);
+
+                      // 记录下载统计
+                      trackDownload(item);
+                    }}
+                    className="opacity-0 group-hover:opacity-100 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center gap-2 transform transition-all duration-200 hover:scale-105"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    {t('home.download')}
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
         </div>
