@@ -32,6 +32,7 @@ const ToolEmbed: React.FC<ToolEmbedProps> = ({
   const [retryCount, setRetryCount] = useState(0);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number | null>(null);
 
   const handleLoad = () => {
@@ -41,7 +42,12 @@ const ToolEmbed: React.FC<ToolEmbedProps> = ({
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
-    
+
+    // iframe 加载完成后重新计算缩放
+    setTimeout(() => {
+      calculateScale();
+    }, 100);
+
     onLoad?.();
   };
 
@@ -78,16 +84,47 @@ const ToolEmbed: React.FC<ToolEmbedProps> = ({
     }
   };
 
+  // 动态计算缩放比例
+  const calculateScale = () => {
+    if (!containerRef.current || !wrapperRef.current || isFullscreen) return;
+
+    const container = containerRef.current;
+    const wrapper = wrapperRef.current;
+    const containerRect = container.getBoundingClientRect();
+
+    // 基准尺寸（iframe 的原始尺寸）
+    const baseWidth = 1200;
+    const baseHeight = 750;
+
+    // 计算缩放比例，保持宽高比
+    const scaleX = containerRect.width / baseWidth;
+    const scaleY = containerRect.height / baseHeight;
+    const scale = Math.min(scaleX, scaleY, 1); // 不放大，只缩小
+
+    wrapper.style.transform = `scale(${scale})`;
+  };
+
   useEffect(() => {
     const handleFullscreenChange = () => {
       setIsFullscreen(!!document.fullscreenElement);
     };
 
+    const handleResize = () => {
+      calculateScale();
+    };
+
+    // 初始计算
+    calculateScale();
+
+    // 监听事件
     document.addEventListener('fullscreenchange', handleFullscreenChange);
+    window.addEventListener('resize', handleResize);
+
     return () => {
       document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [isFullscreen]);
 
   useEffect(() => {
     if (isLoading) {
@@ -151,11 +188,10 @@ const ToolEmbed: React.FC<ToolEmbedProps> = ({
       </div>
 
       {/* Content Area */}
-      <div 
-        className={`${isFullscreen ? 'relative' : 'tool-embed-container'}`}
-        style={{ 
-          height: isFullscreen ? 'calc(100vh - 57px)' : undefined,
-          overflow: 'hidden'
+      <div
+        className={`tool-embed-container ${isFullscreen ? 'fullscreen' : ''}`}
+        style={{
+          height: isFullscreen ? 'calc(100vh - 57px)' : undefined
         }}
       >
         {/* Loading State */}
@@ -199,39 +235,28 @@ const ToolEmbed: React.FC<ToolEmbedProps> = ({
           </div>
         )}
 
-        {/* Iframe */}
+        {/* Iframe with Scale Wrapper */}
         {src && (
-          <iframe
-            ref={iframeRef}
-            src={src}
-            title={title}
-            width={width}
-            height={height}
-            sandbox={sandbox}
-            allowFullScreen={allowFullscreen}
-            onLoad={handleLoad}
-            onError={() => handleError("Failed to load the WigglyPaint tool")}
-            className={`border-0 tool-embed-iframe ${isLoading || hasError ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
-            style={{
-              display: 'block',
-              border: 'none',
-              outline: 'none'
-            }}
-          />
+          <div ref={wrapperRef} className="tool-embed-iframe-wrapper">
+            <iframe
+              ref={iframeRef}
+              src={src}
+              title={title}
+              width={width}
+              height={height}
+              sandbox={sandbox}
+              allowFullScreen={allowFullscreen}
+              onLoad={handleLoad}
+              onError={() => handleError("Failed to load the WigglyPaint tool")}
+              className={`border-0 tool-embed-iframe ${isLoading || hasError ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+              style={{
+                display: 'block',
+                border: 'none',
+                outline: 'none'
+              }}
+            />
+          </div>
         )}
-
-        {/* Mobile Overlay */}
-        <div className="absolute bottom-2 right-2 md:hidden">
-          <button
-            onClick={openInNewTab}
-            className="px-3 py-1 bg-gray-900/80 text-white rounded text-xs flex items-center gap-1 shadow-lg"
-          >
-            <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-            Open
-          </button>
-        </div>
       </div>
     </div>
   );
