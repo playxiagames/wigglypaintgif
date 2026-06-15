@@ -6,7 +6,9 @@
     <script>
       // GitHub Pages SPA redirect hack
       // https://github.com/rafgraph/spa-github-pages
-      var pathSegmentsToKeep = 1;
+      // 自定义域名根目录部署，必须为 0；设为 1 会把子路径保留在 path 里导致
+      // /gallery/ -> /gallery/?/ -> 再次 404 -> 无限循环追加 ~and~
+      var pathSegmentsToKeep = 0;
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
