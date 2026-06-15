@@ -1,21 +1,16 @@
 import { LanguageOption, SupportedLanguage, LanguageRoute } from '../types';
 
+// 当前仅启用英文。后续新增语言（es/ru/pt/de）时在此各处补回对应条目。
 export const LANGUAGES: LanguageOption[] = [
-  { code: 'en', name: 'English', nativeName: 'English' },
-  { code: 'zh', name: 'Chinese', nativeName: '中文' },
-  { code: 'ja', name: 'Japanese', nativeName: '日本語' },
-  { code: 'ko', name: 'Korean', nativeName: '한국어' }
+  { code: 'en', name: 'English', nativeName: 'English' }
 ];
 
 // 语言路由配置
 export const DEFAULT_LANGUAGE: SupportedLanguage = 'en';
-export const SUPPORTED_LANGUAGES: SupportedLanguage[] = ['en', 'zh', 'ja', 'ko'];
+export const SUPPORTED_LANGUAGES: SupportedLanguage[] = ['en'];
 
 export const LANGUAGE_ROUTES: LanguageRoute[] = [
-  { language: 'en', path: '', isDefault: true }, // 默认语言使用空路径
-  { language: 'zh', path: '/zh' },
-  { language: 'ja', path: '/ja' },
-  { language: 'ko', path: '/ko' }
+  { language: 'en', path: '', isDefault: true } // 默认语言使用空路径
 ];
 
 // 语言检测和存储相关常量
@@ -28,15 +23,7 @@ export const BROWSER_LANGUAGE_MAP: Record<string, SupportedLanguage> = {
   'en-US': 'en',
   'en-GB': 'en',
   'en-AU': 'en',
-  'en-CA': 'en',
-  'zh': 'zh',
-  'zh-CN': 'zh',
-  'zh-TW': 'zh',
-  'zh-HK': 'zh',
-  'ja': 'ja',
-  'ja-JP': 'ja',
-  'ko': 'ko',
-  'ko-KR': 'ko'
+  'en-CA': 'en'
 };
 
 export const R2_CDN_BASE_URL = 'https://gifs.wigglypaintgif.com';

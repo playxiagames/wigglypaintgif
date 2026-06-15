@@ -104,33 +104,7 @@ export function detectUserLanguage(): LanguageDetection {
     }
   }
   
-  // 3. 基于时区的简单推断（可选）
-  try {
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    if (timezone.includes('Asia/Shanghai') || timezone.includes('Asia/Beijing')) {
-      return {
-        detectedLanguage: 'zh',
-        confidence: 0.3,
-        source: 'timezone'
-      };
-    } else if (timezone.includes('Asia/Tokyo')) {
-      return {
-        detectedLanguage: 'ja',
-        confidence: 0.3,
-        source: 'timezone'
-      };
-    } else if (timezone.includes('Asia/Seoul')) {
-      return {
-        detectedLanguage: 'ko',
-        confidence: 0.3,
-        source: 'timezone'
-      };
-    }
-  } catch (error) {
-    console.warn('无法获取时区信息:', error);
-  }
-  
-  // 4. 默认语言
+  // 3. 默认语言（当前仅英文，无需基于时区推断；新增语言时可在此恢复）
   return {
     detectedLanguage: DEFAULT_LANGUAGE,
     confidence: 0.1,
@@ -173,11 +147,8 @@ export function isSupportedLanguage(lang: string): lang is SupportedLanguage {
  */
 export function getLanguageDisplayName(language: SupportedLanguage): string {
   const languageMap: Record<SupportedLanguage, string> = {
-    'en': 'English',
-    'zh': '中文',
-    'ja': '日本語',
-    'ko': '한국어'
+    'en': 'English'
   };
-  
+
   return languageMap[language] || language;
 }

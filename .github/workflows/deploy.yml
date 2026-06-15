@@ -30,6 +30,9 @@ jobs:
 
     - name: Install dependencies
       timeout-minutes: 8
+      env:
+        # 安装阶段跳过 Chromium 下载，交由专门的预渲染步骤处理，避免拖慢/超时
+        PUPPETEER_SKIP_DOWNLOAD: 'true'
       run: |
         npm ci --prefer-offline --no-audit --progress=false
         npx vite --version
@@ -41,6 +44,14 @@ jobs:
         NODE_ENV: production
         CI: false
 
+    # 预渲染（SSG）：把首页渲染后的 HTML 写回 dist。脚本自带失败兜底，
+    # 任何异常都会保留 CSR 产物并以 0 退出，不会阻断部署。
+    - name: Prerender (SSG)
+      timeout-minutes: 5
+      run: |
+        npx puppeteer browsers install chrome
+        npm run prerender
+
     - name: Setup Pages
       uses: actions/configure-pages@v4
 
@@ -50,6 +61,12 @@ jobs:
         if [ ! -f "dist/index.html" ]; then
           echo "Error: dist/index.html not found"
           exit 1
+        fi
+        # 软校验：预渲染是否成功（失败不阻断部署，仅告警）
+        if grep -q "What is Wiggly Paint?" dist/index.html; then
+          echo "✅ Prerender OK: homepage content baked into dist/index.html"
+        else
+          echo "::warning::Prerender did not bake homepage content; deploying CSR fallback"
         fi
         echo "Build verification successful"
 

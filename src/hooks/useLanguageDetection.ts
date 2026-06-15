@@ -16,35 +16,12 @@ interface GeoLocation {
 
 // 语言映射配置
 const LANGUAGE_CONFIG = {
-  // 高优先级国家（搜索量大的地区）
-  highPriorityCountries: {
-    'KR': { lang: 'ko', confidence: 0.9 }, // 韩国
-    'JP': { lang: 'ja', confidence: 0.85 }, // 日本
-    'CN': { lang: 'zh', confidence: 0.8 }, // 中国
-    'TW': { lang: 'zh', confidence: 0.8 }, // 台湾
-    'HK': { lang: 'zh', confidence: 0.8 }, // 香港
-    // 暂时只支持4种语言，其他地区不在高优先级列表
-  },
-  // 支持的语言列表（实际项目只支持这4种）
-  supportedLanguages: ['en', 'ko', 'ja', 'zh'],
-  // 浏览器语言到应用语言的映射
+  // 高优先级国家（当前仅英文，无非英语高优先级地区）
+  highPriorityCountries: {} as Record<string, { lang: string; confidence: number }>,
+  // 支持的语言列表（当前仅英文）
+  supportedLanguages: ['en'],
+  // 浏览器语言到应用语言的映射（非英语统一映射到英文）
   browserLangMap: {
-    // 韩语
-    'ko': 'ko',
-    'ko-KR': 'ko',
-    'ko-kr': 'ko',
-    // 日语
-    'ja': 'ja',
-    'ja-JP': 'ja',
-    'ja-jp': 'ja',
-    // 中文
-    'zh': 'zh',
-    'zh-CN': 'zh',
-    'zh-TW': 'zh',
-    'zh-HK': 'zh',
-    'zh-cn': 'zh',
-    'zh-tw': 'zh',
-    'zh-hk': 'zh',
     // 英语
     'en': 'en',
     'en-US': 'en',

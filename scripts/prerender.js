@@ -1,0 +1,160 @@
+#!/usr/bin/env node
+/**
+ * 构建后预渲染（Phase 1：仅首页）
+ *
+ * 目的：把 CSR React 应用渲染后的 HTML 写回 dist，让搜索引擎首轮抓取就能拿到
+ * 正文 + meta，而不依赖 JS 渲染。
+ *
+ * 安全设计（首页排名优先）：
+ *  - 内容断言：抓不到关键正文/标题时「保留原文件、不覆盖、不让构建失败」。
+ *  - 屏蔽 GA / pageview 统计请求，避免 CI 预渲染污染分析数据。
+ *  - 仅在装有 puppeteer 的环境（CI ubuntu）运行；本地默认 build 不触发。
+ *
+ * Phase 2 扩展：往 ROUTES 里追加子页面路径即可。
+ */
+import http from 'node:http';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const DIST = path.join(__dirname, '../dist');
+const PORT = Number(process.env.PRERENDER_PORT) || 4178;
+const HOST = '127.0.0.1';
+
+// 需要预渲染的路由（Phase 1 仅首页）
+const ROUTES = ['/'];
+
+// 每条路由的内容断言：抓取到的 HTML 必须同时包含这些片段，否则视为渲染失败
+const ASSERTIONS = {
+  '/': ['Wiggly Paint', 'What is Wiggly Paint?'],
+};
+
+const MIME = {
+  '.html': 'text/html; charset=utf-8',
+  '.js': 'text/javascript; charset=utf-8',
+  '.mjs': 'text/javascript; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
+  '.svg': 'image/svg+xml',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp',
+  '.gif': 'image/gif',
+  '.ico': 'image/x-icon',
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2',
+  '.txt': 'text/plain; charset=utf-8',
+  '.xml': 'application/xml; charset=utf-8',
+};
+
+// 极简静态服务器：命中文件就返回，否则回退到 index.html（SPA fallback）
+function startServer() {
+  const server = http.createServer((req, res) => {
+    try {
+      const urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
+      let filePath = path.join(DIST, urlPath);
+      if (urlPath.endsWith('/')) filePath = path.join(filePath, 'index.html');
+
+      if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
+        // 资源不存在 → SPA fallback 到 index.html
+        filePath = path.join(DIST, 'index.html');
+      }
+      const ext = path.extname(filePath).toLowerCase();
+      res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream' });
+      fs.createReadStream(filePath).pipe(res);
+    } catch (err) {
+      res.writeHead(500);
+      res.end(String(err));
+    }
+  });
+  return new Promise((resolve) => server.listen(PORT, HOST, () => resolve(server)));
+}
+
+async function main() {
+  if (!fs.existsSync(path.join(DIST, 'index.html'))) {
+    console.error('[prerender] dist/index.html 不存在，请先执行 vite build');
+    process.exit(1);
+  }
+
+  let puppeteer;
+  try {
+    puppeteer = (await import('puppeteer')).default;
+  } catch {
+    console.warn('[prerender] 未安装 puppeteer，跳过预渲染（保留 CSR 产物）');
+    return; // 不中断构建
+  }
+
+  const server = await startServer();
+  const browser = await puppeteer.launch({
+    headless: 'new',
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
+
+  let ok = 0;
+  let failed = 0;
+  try {
+    for (const route of ROUTES) {
+      const page = await browser.newPage();
+
+      // 屏蔽分析/统计请求，避免预渲染产生假流量
+      await page.setRequestInterception(true);
+      page.on('request', (r) => {
+        const u = r.url();
+        if (u.includes('googletagmanager.com') || u.includes('google-analytics.com') ||
+            u.includes('pageview.click') || u.includes('ipapi.co') || u.includes('country.is')) {
+          return r.abort();
+        }
+        return r.continue();
+      });
+
+      const url = `http://${HOST}:${PORT}${route}`;
+      try {
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+        // 等待 React 正文渲染（不等外链 iframe，避免超时/烘焙错误态）
+        await page.waitForSelector('#root h1', { timeout: 15000 });
+        // 给 SEOHead 的 useEffect 和图库渲染留出时间
+        await new Promise((r) => setTimeout(r, 1500));
+
+        const html = '<!doctype html>\n' + (await page.content()).replace(/^<!DOCTYPE html>/i, '');
+        const title = await page.title();
+
+        // 内容断言
+        const needles = ASSERTIONS[route] || [];
+        const missing = needles.filter((n) => !html.includes(n));
+        const rootHasContent = /<div id="root">[\s\S]{200,}<\/div>/.test(html);
+
+        if (missing.length || !rootHasContent || !/Wiggly Paint/i.test(title)) {
+          failed++;
+          console.warn(`[prerender] ✗ ${route} 断言失败，保留原文件。` +
+            ` missing=${JSON.stringify(missing)} rootHasContent=${rootHasContent} title="${title}"`);
+          await page.close();
+          continue;
+        }
+
+        // 写回 dist：'/' → dist/index.html，'/foo/' → dist/foo/index.html
+        const outDir = route === '/' ? DIST : path.join(DIST, route);
+        fs.mkdirSync(outDir, { recursive: true });
+        fs.writeFileSync(path.join(outDir, 'index.html'), html);
+        ok++;
+        console.log(`[prerender] ✓ ${route} (${(html.length / 1024).toFixed(1)} KB) title="${title}"`);
+      } catch (err) {
+        failed++;
+        console.warn(`[prerender] ✗ ${route} 渲染异常，保留原文件：${err.message}`);
+      }
+      await page.close();
+    }
+  } finally {
+    await browser.close();
+    server.close();
+  }
+
+  console.log(`[prerender] 完成：成功 ${ok} / 失败 ${failed} / 共 ${ROUTES.length}`);
+  // 注意：即使有失败也以 0 退出，避免阻断部署（降级为 CSR 产物）
+}
+
+main().catch((err) => {
+  console.warn('[prerender] 顶层异常，跳过预渲染（保留 CSR 产物）：', err.message);
+  process.exit(0);
+});

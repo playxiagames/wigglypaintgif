@@ -8,9 +8,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // 配置信息
+// 当前仅英文。新增语言（es/ru/pt/de）时在 languages 中追加，并恢复 hreflang 生成。
 const config = {
   baseUrl: 'https://wigglypaintgif.com',
-  languages: ['en', 'zh', 'ja', 'ko'],
+  languages: ['en'],
   pages: [
     { path: '', priority: '1.0', changefreq: 'weekly' },
     { path: 'gallery', priority: '0.9', changefreq: 'daily' },
@@ -22,25 +23,11 @@ const config = {
   ]
 };
 
-// 生成 hreflang 链接
-function generateHreflangs(pagePath) {
-  return config.languages.map(lang => {
-    const href = lang === 'en'
-      ? `${config.baseUrl}/${pagePath}`
-      : `${config.baseUrl}/${lang}/${pagePath}`;
-    const hreflang = lang === 'en' ? 'en' : lang;
-    return `    <xhtml:link rel="alternate" hreflang="${hreflang}" href="${href.replace(/\/+$/, '') || config.baseUrl}/" />`;
-  }).join('\n');
-}
+// 生成单个 URL 条目（仅英文，无需 hreflang）
+function generateUrlEntry(page, lastmod) {
+  const url = `${config.baseUrl}/${page.path}`;
 
-// 生成单个 URL 条目
-function generateUrlEntry(lang, page, lastmod) {
-  const isEnglish = lang === 'en';
-  const url = isEnglish
-    ? `${config.baseUrl}/${page.path}`
-    : `${config.baseUrl}/${lang}/${page.path}`;
-
-  // 移除末尾的斜杠，但保留根路径的斜杠
+  // 移除末尾的斜杠，但保留根路径的斜杠；所有页面统一以 / 结尾
   const cleanUrl = url.replace(/\/+$/, '') || config.baseUrl;
   const finalUrl = cleanUrl === config.baseUrl ? cleanUrl + '/' : cleanUrl + '/';
 
@@ -49,7 +36,6 @@ function generateUrlEntry(lang, page, lastmod) {
     <lastmod>${lastmod}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
-${generateHreflangs(page.path)}
   </url>`;
 }
 
@@ -58,19 +44,12 @@ function generateSitemap() {
   const today = new Date().toISOString().split('T')[0];
 
   let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">`;
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  // 为每个语言生成页面
-  config.languages.forEach(lang => {
-    const langComment = lang === 'en' ? 'English' :
-                       lang === 'zh' ? 'Chinese' :
-                       lang === 'ja' ? 'Japanese' : 'Korean';
+  <!-- English Pages -->`;
 
-    sitemap += `\n\n  <!-- ${langComment} Pages -->`;
-
-    config.pages.forEach(page => {
-      sitemap += '\n' + generateUrlEntry(lang, page, today);
-    });
+  config.pages.forEach(page => {
+    sitemap += '\n' + generateUrlEntry(page, today);
   });
 
   sitemap += '\n</urlset>\n';

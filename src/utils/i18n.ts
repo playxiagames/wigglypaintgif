@@ -3,18 +3,20 @@ import { initReactI18next } from 'react-i18next';
 
 // 导入翻译资源
 import enTranslations from '../locales/en/common';
-import zhTranslations from '../locales/zh/common';
-import jaTranslations from '../locales/ja/common';
-import koTranslations from '../locales/ko/common';
 
 // 从URL检测语言
 const detectLanguageFromURL = (): string => {
+  // SSR/预渲染环境无 window，直接回退默认语言
+  if (typeof window === 'undefined') {
+    return 'en';
+  }
+
   const path = window.location.pathname;
   const segments = path.split('/').filter(Boolean);
   const firstSegment = segments[0];
 
-  // 支持的语言列表
-  const supportedLanguages = ['en', 'ko', 'ja', 'zh'];
+  // 支持的语言列表（当前仅英文）
+  const supportedLanguages = ['en'];
 
   if (firstSegment && supportedLanguages.includes(firstSegment)) {
     return firstSegment;
@@ -26,15 +28,6 @@ const detectLanguageFromURL = (): string => {
 const resources = {
   en: {
     common: enTranslations
-  },
-  zh: {
-    common: zhTranslations
-  },
-  ja: {
-    common: jaTranslations
-  },
-  ko: {
-    common: koTranslations
   }
 };
 

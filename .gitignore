@@ -94,3 +94,5 @@ temp/
 *.njsproj
 *.sln
 *.sw?
+# SEO 基线快照（本地记录，勿提交）
+seo-baseline/
