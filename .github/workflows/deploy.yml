@@ -30,9 +30,6 @@ jobs:
 
     - name: Install dependencies
       timeout-minutes: 8
-      env:
-        # 安装阶段跳过 Chromium 下载，交由专门的预渲染步骤处理，避免拖慢/超时
-        PUPPETEER_SKIP_DOWNLOAD: 'true'
       run: |
         npm ci --prefer-offline --no-audit --progress=false
         npx vite --version
@@ -44,11 +41,16 @@ jobs:
         NODE_ENV: production
         CI: false
 
-    # 预渲染（SSG）：把首页渲染后的 HTML 写回 dist。脚本自带失败兜底，
-    # 任何异常都会保留 CSR 产物并以 0 退出，不会阻断部署。
+    # 预渲染（SSG）：把首页渲染后的 HTML 写回 dist。best-effort：
+    # 整步 continue-on-error，任何失败都不阻断部署（退化为 CSR + 静态 meta）。
+    # puppeteer 仅 CI 构建期需要，临时安装（--no-save 不写入 lockfile）。
     - name: Prerender (SSG)
-      timeout-minutes: 5
+      continue-on-error: true
+      timeout-minutes: 6
+      env:
+        PUPPETEER_SKIP_DOWNLOAD: 'true'
       run: |
+        npm install puppeteer@^23 --no-save --no-audit --progress=false
         npx puppeteer browsers install chrome
         npm run prerender
 
