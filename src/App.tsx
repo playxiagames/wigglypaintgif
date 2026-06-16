@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import { initializeGA } from './utils/analytics';
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
             <Route path="terms" element={<Terms />} />
             <Route path="privacy" element={<Privacy />} />
             <Route path="blog" element={<Blog />} />
+            <Route path="blog/:slug" element={<BlogPost />} />
           </Route>
           
           {/* 英语显式路径重定向到根路径 */}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import SEOHead from '../components/common/SEOHead';
+import { breadcrumbSchema } from '../utils/structuredData';
 import { useSimpleGallery } from '../hooks/useSimpleGallery';
 
 const Stats: React.FC = () => {
@@ -23,6 +24,7 @@ const Stats: React.FC = () => {
         ogTitle={t('stats.title')}
         ogDescription={t('stats.description')}
         type="website"
+        schema={breadcrumbSchema('Stats', '/stats/')}
       />
       
       <div className="container mx-auto px-4 py-8">

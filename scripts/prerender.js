@@ -32,10 +32,18 @@ const ASSERTIONS = {
   '/gallery/': ['Wiggly Paint Gallery'],
   '/about/': ['About Wiggly Paint'],
   '/stats/': ['Wiggly Paint Stats'],
-  '/blog/': ['Coming Soon'],
+  '/blog/': ['Wiggly Paint Blog'],
   '/terms/': ['Terms of Service'],
   '/privacy/': ['Privacy Policy'],
 };
+
+// 博客文章：从单一数据源 posts.json 派生路由与断言（断言用各文章 H1）
+const postsPath = path.join(__dirname, '../src/content/blog/posts.json');
+JSON.parse(fs.readFileSync(postsPath, 'utf-8')).forEach((post) => {
+  const route = `/blog/${post.slug}/`;
+  ROUTES.push(route);
+  ASSERTIONS[route] = [post.h1];
+});
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -136,11 +144,13 @@ async function main() {
         const html = '<!doctype html>\n' + (await page.content()).replace(/^<!DOCTYPE html>/i, '');
         const title = await page.title();
 
-        // 内容断言
+        // 内容断言：needles（本页专属 H1/正文）+ root 有实质内容 + 标题非空。
+        // 不再要求标题含品牌名——博客文章标题可能不含 "Wiggly Paint"，
+        // 而 needles 已强力保证渲染的是正确页面（错页/空壳会因缺 needle 被拦）。
         const missing = needles.filter((n) => !html.includes(n));
         const rootHasContent = /<div id="root">[\s\S]{200,}<\/div>/.test(html);
 
-        if (missing.length || !rootHasContent || !/Wiggly Paint/i.test(title)) {
+        if (missing.length || !rootHasContent || !title.trim()) {
           failed++;
           console.warn(`[prerender] ✗ ${route} 断言失败，保留原文件。` +
             ` missing=${JSON.stringify(missing)} rootHasContent=${rootHasContent} title="${title}"`);

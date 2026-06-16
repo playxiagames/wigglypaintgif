@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import SEOHead from '../components/common/SEOHead';
+import { breadcrumbSchema } from '../utils/structuredData';
 
 const Terms: React.FC = () => {
   const { t } = useTranslation();
@@ -14,6 +15,7 @@ const Terms: React.FC = () => {
         ogTitle={t('terms.title')}
         ogDescription={t('terms.description')}
         type="article"
+        schema={breadcrumbSchema('Terms of Service', '/terms/')}
       />
       
       <div className="container mx-auto px-4 py-16">

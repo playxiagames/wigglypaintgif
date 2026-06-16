@@ -23,6 +23,13 @@ const config = {
   ]
 };
 
+// 博客文章：从单一数据源 posts.json 派生，避免在多处重复维护 slug
+const postsPath = path.join(__dirname, '../src/content/blog/posts.json');
+const blogPosts = JSON.parse(fs.readFileSync(postsPath, 'utf-8'));
+blogPosts.forEach(post => {
+  config.pages.push({ path: `blog/${post.slug}`, priority: '0.6', changefreq: 'monthly' });
+});
+
 // 生成单个 URL 条目（仅英文，无需 hreflang）
 function generateUrlEntry(page, lastmod) {
   const url = `${config.baseUrl}/${page.path}`;

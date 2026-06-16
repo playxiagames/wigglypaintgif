@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import SEOHead from '../components/common/SEOHead';
+import { breadcrumbSchema } from '../utils/structuredData';
 
 const Privacy: React.FC = () => {
   const { t } = useTranslation();
@@ -14,6 +15,7 @@ const Privacy: React.FC = () => {
         ogTitle={t('privacy.title')}
         ogDescription={t('privacy.description')}
         type="article"
+        schema={breadcrumbSchema('Privacy Policy', '/privacy/')}
       />
       
       <div className="container mx-auto px-4 py-16">

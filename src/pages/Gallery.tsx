@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import SEOHead from '../components/common/SEOHead';
+import { breadcrumbSchema } from '../utils/structuredData';
 import { useSimpleGallery } from '../hooks/useSimpleGallery';
 import SimpleGalleryGrid from '../components/gallery/SimpleGalleryGrid';
 
@@ -19,6 +20,7 @@ const Gallery: React.FC = () => {
         ogTitle={t('gallery.title')}
         ogDescription={t('gallery.description')}
         type="website"
+        schema={breadcrumbSchema('Gallery', '/gallery/')}
       />
       
       <div className="container mx-auto px-4 py-8">

@@ -11,6 +11,7 @@ interface SEOHeadProps {
   ogImage?: string;
   type?: 'website' | 'article';
   includeHrefLang?: boolean; // 是否包含hreflang标签
+  schema?: Record<string, unknown> | Record<string, unknown>[]; // 本页专属 JSON-LD（如 BreadcrumbList、BlogPosting）
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
@@ -21,10 +22,13 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   ogDescription,
   ogImage,
   type = 'website',
-  includeHrefLang = true
+  includeHrefLang = true,
+  schema
 }) => {
   const location = useLocation();
   const baseUrl = 'https://wigglypaintgif.com';
+  // 序列化一次，作为 effect 依赖，避免 Gallery 等带状态的页面每次渲染都重建脚本
+  const schemaJson = schema ? JSON.stringify(schema) : '';
 
   // 从当前路径提取语言信息
   const { language } = extractLanguageFromPath(location.pathname);
@@ -115,7 +119,23 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       }
     }
 
-  }, [title, description, fullCanonical, ogTitle, ogDescription, finalOgImage, type, includeHrefLang, location.pathname]);
+    // JSON-LD 结构化数据：
+    // 子页面会从首页 shell 继承写死的 WebApplication（id=schema-webapp），
+    // 但它语义上只属于首页，因此非首页时移除它，并注入本页专属 schema。
+    const isHome = location.pathname === '/' || location.pathname === '';
+    if (!isHome) {
+      document.getElementById('schema-webapp')?.remove();
+    }
+    document.getElementById('schema-page')?.remove();
+    if (schemaJson) {
+      const ld = document.createElement('script');
+      ld.type = 'application/ld+json';
+      ld.id = 'schema-page';
+      ld.textContent = schemaJson;
+      document.head.appendChild(ld);
+    }
+
+  }, [title, description, fullCanonical, ogTitle, ogDescription, finalOgImage, type, includeHrefLang, location.pathname, schemaJson]);
 
   return null;
 };
