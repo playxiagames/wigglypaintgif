@@ -22,12 +22,19 @@ const DIST = path.join(__dirname, '../dist');
 const PORT = Number(process.env.PRERENDER_PORT) || 4178;
 const HOST = '127.0.0.1';
 
-// 需要预渲染的路由（Phase 1 仅首页）
-const ROUTES = ['/'];
+// 需要预渲染的路由（与 sitemap 对齐，全部生成实体 200 文件）
+const ROUTES = ['/', '/gallery/', '/about/', '/stats/', '/blog/', '/terms/', '/privacy/'];
 
-// 每条路由的内容断言：抓取到的 HTML 必须同时包含这些片段，否则视为渲染失败
+// 每条路由的内容断言：抓取到的 HTML 必须包含该页专属片段（区别于首页 shell），
+// 否则视为渲染失败 → 保留原文件、不写入（避免把首页或空白烘焙到子路径）。
 const ASSERTIONS = {
-  '/': ['Wiggly Paint', 'What is Wiggly Paint?'],
+  '/': ['What is Wiggly Paint?'],
+  '/gallery/': ['Wiggly Paint Gallery'],
+  '/about/': ['About Wiggly Paint'],
+  '/stats/': ['Wiggly Paint Stats'],
+  '/blog/': ['Coming Soon'],
+  '/terms/': ['Terms of Service'],
+  '/privacy/': ['Privacy Policy'],
 };
 
 const MIME = {
@@ -110,18 +117,26 @@ async function main() {
       });
 
       const url = `http://${HOST}:${PORT}${route}`;
+      const needles = ASSERTIONS[route] || [];
       try {
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
-        // 等待 React 正文渲染（不等外链 iframe，避免超时/烘焙错误态）
-        await page.waitForSelector('#root h1', { timeout: 15000 });
-        // 给 SEOHead 的 useEffect 和图库渲染留出时间
-        await new Promise((r) => setTimeout(r, 1500));
+        // 子路由借用的 shell 是已预渲染的首页（已含 H1），不能只等 h1，
+        // 必须等到「该路由专属标记」出现，确认 React 已路由并渲染目标页。
+        if (needles[0]) {
+          await page.waitForFunction(
+            (n) => (document.body && document.body.innerText.includes(n)) || document.title.includes(n),
+            { timeout: 15000 }, needles[0]
+          );
+        } else {
+          await page.waitForSelector('#root h1', { timeout: 15000 });
+        }
+        // 给 SEOHead 的 useEffect（title/canonical/meta 更新）和图库渲染留时间
+        await new Promise((r) => setTimeout(r, 1000));
 
         const html = '<!doctype html>\n' + (await page.content()).replace(/^<!DOCTYPE html>/i, '');
         const title = await page.title();
 
         // 内容断言
-        const needles = ASSERTIONS[route] || [];
         const missing = needles.filter((n) => !html.includes(n));
         const rootHasContent = /<div id="root">[\s\S]{200,}<\/div>/.test(html);
 
