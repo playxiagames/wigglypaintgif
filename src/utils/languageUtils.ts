@@ -2,13 +2,21 @@ import {
   SupportedLanguage, 
   LanguageDetection 
 } from '../types';
-import { 
-  DEFAULT_LANGUAGE, 
-  SUPPORTED_LANGUAGES, 
-  LANGUAGE_ROUTES, 
+import {
+  DEFAULT_LANGUAGE,
+  SUPPORTED_LANGUAGES,
+  LANGUAGE_ROUTES,
+  LOCALIZED_ROUTES,
+  LANGUAGES,
   BROWSER_LANGUAGE_MAP,
-  LANGUAGE_STORAGE_KEY
+  LANGUAGE_STORAGE_KEY,
+  SITE_URL
 } from './constants';
+
+// 把任意路径归一为 LOCALIZED_ROUTES 的 key：'/gallery/' -> 'gallery'，'/' -> ''
+function routeKeyOf(path: string): string {
+  return path.replace(/^\/+|\/+$/g, '');
+}
 
 /**
  * 从URL路径中提取语言代码
@@ -49,6 +57,13 @@ export function buildLanguagePath(path: string, language: SupportedLanguage): st
 
   // 如果是默认语言，不添加前缀
   if (language === DEFAULT_LANGUAGE) {
+    return normalizedPath;
+  }
+
+  // 仅当该路径已为目标语言翻译时才加前缀；否则回退英文版（不加前缀），
+  // 避免生成无实体文件/无翻译的语言子页链接（对 Googlebot 是 404 或重复内容）。
+  const localized = LOCALIZED_ROUTES[language] || [];
+  if (!localized.includes(routeKeyOf(normalizedPath))) {
     return normalizedPath;
   }
 
@@ -128,11 +143,16 @@ export function saveLanguagePreference(language: SupportedLanguage): void {
  */
 export function getHrefLangLinks(currentPath: string): Array<{ lang: string; href: string }> {
   const { pathWithoutLanguage } = extractLanguageFromPath(currentPath);
-  
-  return LANGUAGE_ROUTES.map(route => ({
-    lang: route.language === 'en' ? 'en' : route.language,
-    href: `${window.location.origin}${buildLanguagePath(pathWithoutLanguage, route.language)}`
-  }));
+  const key = routeKeyOf(pathWithoutLanguage);
+
+  // 仅为「该路径确有对应语言版本」的语言输出 hreflang，
+  // 否则会指向不存在的页面（GSC 报 hreflang 无效）。用固定 SITE_URL 防预渲染写入 localhost。
+  return LANGUAGE_ROUTES
+    .filter(route => (LOCALIZED_ROUTES[route.language] || []).includes(key))
+    .map(route => ({
+      lang: route.language,
+      href: `${SITE_URL}${buildLanguagePath(pathWithoutLanguage, route.language)}`
+    }));
 }
 
 /**
@@ -146,9 +166,6 @@ export function isSupportedLanguage(lang: string): lang is SupportedLanguage {
  * 获取语言的本地化显示名称
  */
 export function getLanguageDisplayName(language: SupportedLanguage): string {
-  const languageMap: Record<SupportedLanguage, string> = {
-    'en': 'English'
-  };
-
-  return languageMap[language] || language;
+  // 从 LANGUAGES 单一数据源派生，避免新增语言时漏改硬编码表
+  return LANGUAGES.find(l => l.code === language)?.nativeName || language;
 }

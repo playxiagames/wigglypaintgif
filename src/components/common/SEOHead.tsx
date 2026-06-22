@@ -42,7 +42,10 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   useEffect(() => {
     // Update document title
     document.title = title;
-    
+
+    // 同步 <html lang>，让 /es/ 等语言页正确标注语言（预渲染会烘焙进静态 HTML）
+    document.documentElement.lang = language;
+
     // Update or create meta tags
     const updateMetaTag = (name: string, content: string, property = false) => {
       const selector = property ? `meta[property="${name}"]` : `meta[name="${name}"]`;
@@ -81,6 +84,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     updateMetaTag('og:description', ogDescription || description, true);
     updateMetaTag('og:image', finalOgImage, true);
     updateMetaTag('og:site_name', 'Wiggly Paint GIF Creator', true);
+    updateMetaTag('og:locale', language === 'es' ? 'es_ES' : 'en_US', true);
 
     // Twitter tags
     updateMetaTag('twitter:card', 'summary_large_image', true);
@@ -135,7 +139,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       document.head.appendChild(ld);
     }
 
-  }, [title, description, fullCanonical, ogTitle, ogDescription, finalOgImage, type, includeHrefLang, location.pathname, schemaJson]);
+  }, [title, description, fullCanonical, ogTitle, ogDescription, finalOgImage, type, includeHrefLang, location.pathname, language, schemaJson]);
 
   return null;
 };

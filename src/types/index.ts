@@ -23,8 +23,8 @@ export interface LanguageOption {
 }
 
 // 语言路由相关类型
-// 当前仅启用英文；新增语言时在此扩展（如 'es' | 'ru' | 'pt' | 'de'）
-export type SupportedLanguage = 'en';
+// 当前启用英文 + 西班牙语；新增语言时在此扩展（如 'ru' | 'pt' | 'de'）
+export type SupportedLanguage = 'en' | 'es';
 
 export interface LanguageRoute {
   language: SupportedLanguage;

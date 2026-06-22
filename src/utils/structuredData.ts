@@ -57,3 +57,26 @@ export const blogPostSchema = (post: BlogPostMeta) => {
     },
   ];
 };
+
+interface WebAppMeta {
+  url: string;
+  description: string;
+  inLanguage: string;
+}
+
+/**
+ * 首页 WebApplication，仅供非英语首页使用（英语首页用 index.html 写死的版本）。
+ * 字段与 index.html 的英文版对齐，url/description/语言按当前语言本地化。
+ */
+export const webApplicationSchema = (meta: WebAppMeta) => ({
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Wiggly Paint',
+  alternateName: 'WigglyPaint',
+  url: meta.url,
+  description: meta.description,
+  applicationCategory: 'DesignApplication',
+  operatingSystem: 'Any (web browser)',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  inLanguage: meta.inLanguage,
+});

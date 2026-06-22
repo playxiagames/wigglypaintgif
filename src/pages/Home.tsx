@@ -9,11 +9,19 @@ import { useSimpleGallery } from '../hooks/useSimpleGallery';
 import { useLanguageDetection } from '../hooks/useLanguageDetection';
 import { useLanguageRouter } from '../hooks/useLanguageRouter';
 import { formatParagraph, formatListItem } from '../utils/textFormatter';
+import { webApplicationSchema } from '../utils/structuredData';
+import { SITE_URL } from '../utils/constants';
 import { SupportedLanguage } from '../types';
 
 const Home: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { items, trackDownload } = useSimpleGallery(290);
+
+  // 非英语首页注入本地化 WebApplication（英语首页用 index.html 写死的版本，故不传）
+  const lang = i18n.language;
+  const homeSchema = lang !== 'en'
+    ? webApplicationSchema({ url: `${SITE_URL}/${lang}/`, description: t('home.description'), inLanguage: lang })
+    : undefined;
   const [showLanguageSuggestion, setShowLanguageSuggestion] = useState(true);
 
   // 获取前18个GIF作为预览 (3行 x 6列)
@@ -71,6 +79,7 @@ const Home: React.FC = () => {
         ogTitle={t('home.title')}
         ogDescription={t('home.description')}
         type="website"
+        schema={homeSchema}
       />
       
       {/* Hero Section */}

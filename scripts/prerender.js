@@ -23,12 +23,14 @@ const PORT = Number(process.env.PRERENDER_PORT) || 4178;
 const HOST = '127.0.0.1';
 
 // 需要预渲染的路由（与 sitemap 对齐，全部生成实体 200 文件）
-const ROUTES = ['/', '/gallery/', '/about/', '/stats/', '/blog/', '/terms/', '/privacy/'];
+// /es/ = 西语首页落地页（i18n 按 URL 段检测语言，渲染西语内容）
+const ROUTES = ['/', '/es/', '/gallery/', '/about/', '/stats/', '/blog/', '/terms/', '/privacy/'];
 
 // 每条路由的内容断言：抓取到的 HTML 必须包含该页专属片段（区别于首页 shell），
 // 否则视为渲染失败 → 保留原文件、不写入（避免把首页或空白烘焙到子路径）。
 const ASSERTIONS = {
   '/': ['What is Wiggly Paint?'],
+  '/es/': ['Crea GIF Animados Gratis'], // 西语独有片段，确认烘焙的是西语而非英文 shell
   '/gallery/': ['Wiggly Paint Gallery'],
   '/about/': ['About Wiggly Paint'],
   '/stats/': ['Wiggly Paint Stats'],

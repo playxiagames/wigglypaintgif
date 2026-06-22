@@ -3,6 +3,8 @@ import { initReactI18next } from 'react-i18next';
 
 // 导入翻译资源
 import enTranslations from '../locales/en/common';
+import esTranslations from '../locales/es/common';
+import { SUPPORTED_LANGUAGES } from './constants';
 
 // 从URL检测语言
 const detectLanguageFromURL = (): string => {
@@ -15,10 +17,9 @@ const detectLanguageFromURL = (): string => {
   const segments = path.split('/').filter(Boolean);
   const firstSegment = segments[0];
 
-  // 支持的语言列表（当前仅英文）
-  const supportedLanguages = ['en'];
-
-  if (firstSegment && supportedLanguages.includes(firstSegment)) {
+  // 支持的语言列表（复用 constants 单一数据源，避免新增语言时漏改这里
+  // 导致预渲染 /es/ 时检测不到西语、烘焙出英文内容）
+  if (firstSegment && (SUPPORTED_LANGUAGES as string[]).includes(firstSegment)) {
     return firstSegment;
   }
 
@@ -28,6 +29,9 @@ const detectLanguageFromURL = (): string => {
 const resources = {
   en: {
     common: enTranslations
+  },
+  es: {
+    common: esTranslations
   }
 };
 
