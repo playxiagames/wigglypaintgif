@@ -7,13 +7,24 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// 配置信息
-// 多语言：在页面的 languages 中列出已翻译的语言（缺省为 ['en']）。
-// 必须与 src/utils/constants.ts 的 LOCALIZED_ROUTES 保持一致。
+// 语言单一数据源（与 src/utils/constants.ts 同源；新增语言零改动本脚本）
+const langsPath = path.join(__dirname, '../src/locales/languages.json');
+const LANGS = JSON.parse(fs.readFileSync(langsPath, 'utf-8'));
+
+// 语言 → URL 前缀（默认语言无前缀）
+const LANG_PREFIX = Object.fromEntries(LANGS.map(l => [l.code, l.urlPrefix]));
+
+// 某页支持哪些语言 = 该路径在哪些语言的 localizedRoutes 白名单里；否则仅英文。
+function langsForPage(pagePath) {
+  const langs = LANGS.filter(l => l.localizedRoutes.includes(pagePath)).map(l => l.code);
+  return langs.length ? langs : ['en'];
+}
+
+// 配置信息（languages 维度由 langsForPage 自动派生，无需在此手列）
 const config = {
   baseUrl: 'https://wigglypaintgif.com',
   pages: [
-    { path: '', priority: '1.0', changefreq: 'weekly', languages: ['en', 'es'] },
+    { path: '', priority: '1.0', changefreq: 'weekly' },
     { path: 'gallery', priority: '0.9', changefreq: 'daily' },
     { path: 'about', priority: '0.7', changefreq: 'monthly' },
     { path: 'stats', priority: '0.6', changefreq: 'weekly' },
@@ -22,9 +33,6 @@ const config = {
     { path: 'blog', priority: '0.5', changefreq: 'weekly' }
   ]
 };
-
-// 语言 → URL 前缀（默认语言 en 无前缀）
-const LANG_PREFIX = { en: '', es: '/es' };
 
 // 博客文章：从单一数据源 posts.json 派生（仅英文）
 const postsPath = path.join(__dirname, '../src/content/blog/posts.json');
@@ -42,7 +50,7 @@ function buildUrl(pagePath, lang) {
 
 // 为一个页面生成 <url> 条目：多语言页面会为每个语言各出一条，并互相标注 hreflang
 function generateUrlEntries(page, lastmod) {
-  const langs = page.languages || ['en'];
+  const langs = langsForPage(page.path);
 
   return langs.map(lang => {
     const loc = buildUrl(page.path, lang);
@@ -104,7 +112,7 @@ function writeSitemap() {
   }
 
   // 统计 URL 数量（多语言页面按语言数计）
-  const totalUrls = config.pages.reduce((n, p) => n + (p.languages || ['en']).length, 0);
+  const totalUrls = config.pages.reduce((n, p) => n + langsForPage(p.path).length, 0);
   console.log(`📊 Generated sitemap with ${totalUrls} URLs (${config.pages.length} pages)`);
 }
 

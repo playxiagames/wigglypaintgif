@@ -22,15 +22,24 @@ const DIST = path.join(__dirname, '../dist');
 const PORT = Number(process.env.PRERENDER_PORT) || 4178;
 const HOST = '127.0.0.1';
 
-// 需要预渲染的路由（与 sitemap 对齐，全部生成实体 200 文件）
-// /es/ = 西语首页落地页（i18n 按 URL 段检测语言，渲染西语内容）
-const ROUTES = ['/', '/es/', '/gallery/', '/about/', '/stats/', '/blog/', '/terms/', '/privacy/'];
+// 路由与断言全部从单一数据源派生（与 sitemap 对齐，全部生成实体 200 文件）：
+//  - 各语言首页：从 src/locales/languages.json 派生（含该语言独有断言片段，
+//    防止漏改导致把英文 shell 静默烘焙到 /de/ 等语言路径）。
+//  - 英文子页：仅英文本地化，断言为各页专属 H1/正文。
+//  - 博客文章：从 src/content/blog/posts.json 派生（断言用各文章 H1）。
+const ROUTES = [];
+const ASSERTIONS = {};
 
-// 每条路由的内容断言：抓取到的 HTML 必须包含该页专属片段（区别于首页 shell），
-// 否则视为渲染失败 → 保留原文件、不写入（避免把首页或空白烘焙到子路径）。
-const ASSERTIONS = {
-  '/': ['What is Wiggly Paint?'],
-  '/es/': ['Crea GIF Animados Gratis'], // 西语独有片段，确认烘焙的是西语而非英文 shell
+// 各语言首页（默认语言 → '/'，其余 → '/<prefix>/'）
+const langsPath = path.join(__dirname, '../src/locales/languages.json');
+JSON.parse(fs.readFileSync(langsPath, 'utf-8')).forEach((lang) => {
+  const home = lang.urlPrefix ? `${lang.urlPrefix}/` : '/';
+  ROUTES.push(home);
+  ASSERTIONS[home] = [lang.homeAssertion];
+});
+
+// 英文子页（仅英文本地化）
+const EN_SUBPAGE_ASSERTIONS = {
   '/gallery/': ['Wiggly Paint Gallery'],
   '/about/': ['About Wiggly Paint'],
   '/stats/': ['Wiggly Paint Stats'],
@@ -38,6 +47,10 @@ const ASSERTIONS = {
   '/terms/': ['Terms of Service'],
   '/privacy/': ['Privacy Policy'],
 };
+for (const [route, needles] of Object.entries(EN_SUBPAGE_ASSERTIONS)) {
+  ROUTES.push(route);
+  ASSERTIONS[route] = needles;
+}
 
 // 博客文章：从单一数据源 posts.json 派生路由与断言（断言用各文章 H1）
 const postsPath = path.join(__dirname, '../src/content/blog/posts.json');

@@ -23,8 +23,8 @@ export interface LanguageOption {
 }
 
 // 语言路由相关类型
-// 当前启用英文 + 西班牙语；新增语言时在此扩展（如 'ru' | 'pt' | 'de'）
-export type SupportedLanguage = 'en' | 'es';
+// 与 src/locales/languages.json 的 code 保持一致（JSON 无法派生字面量类型，故此处手动同步）
+export type SupportedLanguage = 'en' | 'es' | 'de' | 'fr' | 'pt' | 'ru';
 
 export interface LanguageRoute {
   language: SupportedLanguage;

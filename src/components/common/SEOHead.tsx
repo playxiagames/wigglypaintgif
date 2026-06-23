@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getHrefLangLinks, extractLanguageFromPath, buildLanguagePath } from '../../utils/languageUtils';
+import { OG_LOCALE_MAP } from '../../utils/constants';
 
 interface SEOHeadProps {
   title: string;
@@ -84,7 +85,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     updateMetaTag('og:description', ogDescription || description, true);
     updateMetaTag('og:image', finalOgImage, true);
     updateMetaTag('og:site_name', 'Wiggly Paint GIF Creator', true);
-    updateMetaTag('og:locale', language === 'es' ? 'es_ES' : 'en_US', true);
+    updateMetaTag('og:locale', OG_LOCALE_MAP[language] || 'en_US', true);
 
     // Twitter tags
     updateMetaTag('twitter:card', 'summary_large_image', true);

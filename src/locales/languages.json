@@ -1,0 +1,63 @@
+[
+  {
+    "code": "en",
+    "name": "English",
+    "nativeName": "English",
+    "urlPrefix": "",
+    "isDefault": true,
+    "ogLocale": "en_US",
+    "localizedRoutes": ["", "gallery", "about", "stats", "contact", "terms", "privacy", "blog"],
+    "browserVariants": ["en", "en-us", "en-gb", "en-au", "en-ca"],
+    "homeAssertion": "What is Wiggly Paint?"
+  },
+  {
+    "code": "es",
+    "name": "Spanish",
+    "nativeName": "Español",
+    "urlPrefix": "/es",
+    "ogLocale": "es_ES",
+    "localizedRoutes": [""],
+    "browserVariants": ["es", "es-es", "es-mx", "es-ar", "es-co", "es-419"],
+    "homeAssertion": "Crea GIF Animados Gratis"
+  },
+  {
+    "code": "de",
+    "name": "German",
+    "nativeName": "Deutsch",
+    "urlPrefix": "/de",
+    "ogLocale": "de_DE",
+    "localizedRoutes": [""],
+    "browserVariants": ["de", "de-de", "de-at", "de-ch"],
+    "homeAssertion": "Animierte GIFs kostenlos"
+  },
+  {
+    "code": "fr",
+    "name": "French",
+    "nativeName": "Français",
+    "urlPrefix": "/fr",
+    "ogLocale": "fr_FR",
+    "localizedRoutes": [""],
+    "browserVariants": ["fr", "fr-fr", "fr-ca", "fr-be", "fr-ch"],
+    "homeAssertion": "Créez des GIF animés gratuits"
+  },
+  {
+    "code": "pt",
+    "name": "Portuguese",
+    "nativeName": "Português",
+    "urlPrefix": "/pt",
+    "ogLocale": "pt_BR",
+    "localizedRoutes": [""],
+    "browserVariants": ["pt", "pt-br", "pt-pt"],
+    "homeAssertion": "Crie GIFs Animados Grátis"
+  },
+  {
+    "code": "ru",
+    "name": "Russian",
+    "nativeName": "Русский",
+    "urlPrefix": "/ru",
+    "ogLocale": "ru_RU",
+    "localizedRoutes": [""],
+    "browserVariants": ["ru", "ru-ru", "ru-by", "ru-kz"],
+    "homeAssertion": "анимированные GIF бесплатно"
+  }
+]

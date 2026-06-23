@@ -1,48 +1,70 @@
+import languagesData from '../locales/languages.json';
 import { LanguageOption, SupportedLanguage, LanguageRoute } from '../types';
 
-// 当前启用英文 + 西班牙语。后续新增语言（ru/pt/de）时在此各处补回对应条目。
-export const LANGUAGES: LanguageOption[] = [
-  { code: 'en', name: 'English', nativeName: 'English' },
-  { code: 'es', name: 'Spanish', nativeName: 'Español' }
-];
+/**
+ * 语言单一数据源：所有语言相关配置均从 src/locales/languages.json 派生。
+ *
+ * 新增语言只需三步：
+ *  1) 在 languages.json 加一条（含 urlPrefix / localizedRoutes / browserVariants / homeAssertion / ogLocale）
+ *  2) 新建 src/locales/<code>/common.ts 翻译
+ *  3) 在 src/utils/i18n.ts 登记该翻译模块（1 行 import + 1 条映射）
+ * constants / prerender.js / generate-sitemap.js 全部自动派生，无需逐处手改
+ * （消除「加一个语言要改 6 文件 10 处」的霰弹式修改 / 僵化）。
+ */
+interface LanguageMeta {
+  code: string;
+  name: string;
+  nativeName: string;
+  urlPrefix: string;          // URL 前缀（默认语言为 ''）
+  isDefault?: boolean;
+  ogLocale: string;           // og:locale 值，如 'es_ES'
+  localizedRoutes: string[];  // 该语言已翻译的路径段（'' = 首页）
+  browserVariants: string[];  // navigator.language 变体（全小写），用于浏览器语言检测
+  homeAssertion: string;      // 预渲染断言：该语言首页 HTML 必含的独有片段
+}
 
-// 语言路由配置
-export const DEFAULT_LANGUAGE: SupportedLanguage = 'en';
-export const SUPPORTED_LANGUAGES: SupportedLanguage[] = ['en', 'es'];
+const LANGS = languagesData as LanguageMeta[];
 
-export const LANGUAGE_ROUTES: LanguageRoute[] = [
-  { language: 'en', path: '', isDefault: true }, // 默认语言使用空路径
-  { language: 'es', path: '/es' }
-];
+// UI 展示用语言列表（语言切换器等从此渲染）
+export const LANGUAGES: LanguageOption[] = LANGS.map(({ code, name, nativeName }) => ({
+  code,
+  name,
+  nativeName,
+}));
+
+export const DEFAULT_LANGUAGE: SupportedLanguage =
+  (LANGS.find((l) => l.isDefault)?.code ?? 'en') as SupportedLanguage;
+
+export const SUPPORTED_LANGUAGES: SupportedLanguage[] = LANGS.map(
+  (l) => l.code
+) as SupportedLanguage[];
+
+export const LANGUAGE_ROUTES: LanguageRoute[] = LANGS.map((l) => ({
+  language: l.code as SupportedLanguage,
+  path: l.urlPrefix,
+  ...(l.isDefault ? { isDefault: true } : {}),
+}));
 
 // 各语言「已实际翻译」的路径白名单（不含语言前缀，'' = 首页）。
 // 仅这些路径会生成该语言前缀 URL 与 hreflang；其余回退英文，
-// 避免出现「有 /es/ URL 但无实体文件/无翻译」的页面（对 Googlebot 是 404 或重复内容）。
-// 今后翻译了某子页，把其路径段（如 'gallery'）加进对应语言数组即可。
-export const LOCALIZED_ROUTES: Record<SupportedLanguage, string[]> = {
-  en: ['', 'gallery', 'about', 'stats', 'contact', 'terms', 'privacy', 'blog'],
-  es: [''] // 西语目前仅首页落地页
-};
+// 避免「有 URL 但无实体文件/无翻译」的页面（对 Googlebot 是 404 或重复内容）。
+export const LOCALIZED_ROUTES = Object.fromEntries(
+  LANGS.map((l) => [l.code, l.localizedRoutes])
+) as Record<SupportedLanguage, string[]>;
+
+// navigator.language（toLowerCase 后）→ 应用语言。
+export const BROWSER_LANGUAGE_MAP = Object.fromEntries(
+  LANGS.flatMap((l) => l.browserVariants.map((v) => [v, l.code]))
+) as Record<string, SupportedLanguage>;
+
+// 语言 → og:locale（社交分享 / SEO meta 用）。
+export const OG_LOCALE_MAP = Object.fromEntries(
+  LANGS.map((l) => [l.code, l.ogLocale])
+) as Record<string, string>;
 
 // 语言检测和存储相关常量
 export const LANGUAGE_STORAGE_KEY = 'wigglyPaint_language_preference';
 export const LANGUAGE_DETECTION_DISABLED_KEY = 'wigglyPaint_language_detection_disabled';
-
-// 支持的浏览器语言到我们语言的映射
-export const BROWSER_LANGUAGE_MAP: Record<string, SupportedLanguage> = {
-  'en': 'en',
-  'en-US': 'en',
-  'en-GB': 'en',
-  'en-AU': 'en',
-  'en-CA': 'en',
-  // 西语变体（detectUserLanguage 会 toLowerCase 后查表，故 key 用小写）
-  'es': 'es',
-  'es-es': 'es',
-  'es-mx': 'es',
-  'es-ar': 'es',
-  'es-co': 'es',
-  'es-419': 'es'
-};
 
 export const R2_CDN_BASE_URL = 'https://gifs.wigglypaintgif.com';
 
